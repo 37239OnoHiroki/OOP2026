@@ -11,7 +11,6 @@
                 Console.WriteLine("Hello, World!");
                 i++;
             }
-            Console.WriteLine(i + "回繰り返しました");
         }
     }
 }
