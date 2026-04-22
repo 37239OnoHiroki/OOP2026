@@ -7,23 +7,42 @@ namespace DistanceConverter
         static void Main(string[] args)
         {
 
-            int start = int.Parse(args[1]);
-            int stop = int.Parse(args[2]);
 
-
-
-            if (args.Length >= 1 && args[0] == "-tom")//コマンドライン引数
+            int argsCounter;
+            for (argsCounter = 0; argsCounter < args.Length; argsCounter++)
             {
-                PrintFeetToMeterList(start, stop);//メートルへの変換
             }
-            else if (args[0] == "-tof")
+            if (argsCounter == 3)//引数の数をチェック
             {
-                PrintMeterToFeetList(start, stop);//フィートへの変換
+                if ((int.TryParse(args[1], out int start)) && (int.TryParse(args[2], out int stop)))//引数に数字が入っているかをチェック
+                {
+
+
+                    if (args.Length >= 1 && args[0] == "-tom")//コマンドライン引数
+                    {
+                        PrintFeetToMeterList(start, stop);//メートルへの変換
+                    }
+                    else if (args[0] == "-tof")
+                    {
+                        PrintMeterToFeetList(start, stop);//フィートへの変換
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("引数エラー");
+                    }
+
+
+                }
+                else
+                {
+                    Console.WriteLine("数字以外が入っている");
+                }
 
             }
             else
             {
-                Console.WriteLine("引数エラー");
+                Console.WriteLine("引数が3つではない");
             }
 
 
