@@ -7,15 +7,21 @@ namespace DistanceConverter
         static void Main(string[] args)
         {
 
+            int start = int.Parse(args[1]);
+            int stop = int.Parse(args[2]);
+
+
+
             if (args.Length >= 1 && args[0] == "-tom")//コマンドライン引数
             {
-                PrintFeetToMeterList(1, 10);//メートルへの変換
+                PrintFeetToMeterList(start, stop);//メートルへの変換
             }
             else if (args[0] == "-tof")
             {
-                PrintMeterToFeetList(1, 10);//フィートへの変換
+                PrintMeterToFeetList(start, stop);//フィートへの変換
 
-            }else
+            }
+            else
             {
                 Console.WriteLine("引数エラー");
             }
