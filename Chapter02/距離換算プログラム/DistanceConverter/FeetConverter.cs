@@ -8,15 +8,18 @@ namespace DistanceConverter
 {
     public static　class FeetConverter//static 静的クラス
     {
+        private static readonly double ratio = 0.3048; //定数
+
+
         //メートルからフィートを求める
         public static double FromMeter(int feet)
         {
-            return feet / 0.3048;
+            return feet / ratio;
         }
         //フィートからメートルを求める
         public static double ToMeret(int feet)
         {
-            return feet * 0.3048;
+            return feet * ratio;
         }
     }
 }
