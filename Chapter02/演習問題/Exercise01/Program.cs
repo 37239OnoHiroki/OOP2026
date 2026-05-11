@@ -7,11 +7,13 @@
                new Song("Close To You", "Carpenters", 276),
                new Song("Honesty", "Billy Joel", 231),
                new Song("I Will Always Love You", "Whitney Houston", 273),
-             };
+            };
             PrintSongs(songs);
         }
         private static void PrintSongs(Song[] songs) {
-
+            foreach (var song in songs ) {
+                Console.WriteLine($"{ song.Title},{ song.ArtistName},{song.Length/60}:{song.Length % 60}");
+            }
         }
     }
 }
