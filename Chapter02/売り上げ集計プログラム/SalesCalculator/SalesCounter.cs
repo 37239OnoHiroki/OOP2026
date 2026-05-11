@@ -16,12 +16,11 @@ namespace SalesCalculator {
 
 
         public IEnumerable<Sale> ReadSales(string filePath) {
-            List<Sale> sales = new List<Sale>();    //リスト
-
-            string[] lines = File.ReadAllLines(filePath);
+            var sales = new List<Sale>();    //リスト
+            var lines = File.ReadAllLines(filePath);
             foreach (string line in lines) {
-                string[] items = line.Split(',');//カンマ空切り区切りで分割
-                Sale sale = new Sale {
+                var items = line.Split(',');//カンマ空切り区切りで分割
+                var sale = new Sale {
                     ShopName = items[0],
                     ProductCategory = items[1],
                     Amount = int.Parse(items[2]),
