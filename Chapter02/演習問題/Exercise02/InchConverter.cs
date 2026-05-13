@@ -10,6 +10,10 @@ namespace Exercise02 {
 
         private static readonly double ratio = 0.0254; //定数
 
+        //メートルからインチを求める
+        public static double FromMeter(int feet) {
+            return feet / ratio;
+        }
 
         //インチからメートルを求める
         public static double ToMeter(int inch) {
