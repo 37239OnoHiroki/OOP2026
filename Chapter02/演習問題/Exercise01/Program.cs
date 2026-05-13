@@ -1,18 +1,30 @@
 ﻿namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
-            var songs = new Song[] {
-               new Song("Let it be", "The Beatles", 243),
-               new Song("Bridge Over Troubled Water", "Simon & Garfunkel", 293),
-               new Song("Close To You", "Carpenters", 276),
-               new Song("Honesty", "Billy Joel", 231),
-               new Song("I Will Always Love You", "Whitney Houston", 273),
-            };
+
+            var songs = new List<Song>();
+
+            while (true) {
+                Console.Write("曲名:");
+                string? inputTitle = Console.ReadLine();
+                if (inputTitle.ToLower() == "end") {
+                    break;
+                }
+                Console.Write("アーティスト名:");
+                string? inputArtistName = Console.ReadLine();
+                Console.Write("曲の長さ");
+                int inputLength = int.Parse(Console.ReadLine());
+                Song song = new Song(inputTitle, inputArtistName, inputLength);
+                songs.Add(song);
+            }
+
             PrintSongs(songs);
+
         }
-        private static void PrintSongs(Song[] songs) {
-            foreach (var song in songs ) {
-                Console.WriteLine($"{ song.Title},{ song.ArtistName},{song.Length/60}:{song.Length % 60}");
+        //2.1.4
+        private static void PrintSongs(IEnumerable<Song> songs) {
+            foreach (var song in songs) {
+                Console.WriteLine($"{song.Title},{song.ArtistName},{song.Length / 60}:{song.Length % 60:00}");
             }
         }
     }
