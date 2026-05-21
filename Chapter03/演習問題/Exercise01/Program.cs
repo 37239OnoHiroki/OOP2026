@@ -21,22 +21,32 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(List<int> numbers) {
-            var exis = numbers.Exists(s => s %8 ==0 || s %9 ==0);
+            Console.WriteLine("---3.1.1----");
+            var exis = numbers.Exists(num => num %8 ==0 || num %9 ==0);
             if (exis == true) {
                 Console.WriteLine("存在しています");
             }
         }
 
         private static void Exercise2(List<int> numbers) {
-            
-            
+            Console.WriteLine("---3.1.2----");
+            numbers.ForEach(num => Console.WriteLine( num /2.0));
         }
 
         private static void Exercise3(List<int> numbers) {
-            
+            Console.WriteLine("---3.1.3----");
+            var query = numbers.Where(s => s >= 50).ToList();
+            foreach (var item in query) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise4(List<int> numbers) {
+            Console.WriteLine("---3.1.4----");
+            var query = numbers.Select(s => s *2).ToList();
+            foreach (int num in query) {
+                Console.WriteLine(num);
+            }
 
         }
     }
