@@ -33,13 +33,13 @@ namespace Exercise02 {
 
         private static void Exercise2_2(List<string> cities) {
             //できたらGitのコメント「問題3.2.2完成」
-            var exis = cities.Count(s => s.Contains('o'));
-            Console.WriteLine(exis);
+            var count = cities.Count(s => s.Contains('o'));
+            Console.WriteLine(count);
         }
 
         private static void Exercise2_3(List<string> cities) {
             //できたらGitのコメント「問題3.2.3完成」
-            var query = cities.Where(s => s.Contains('o'));
+            var query = cities.Where(s => s.Contains('o')).ToArray();
             foreach (var item in query) {
                 Console.WriteLine(item);
             }
@@ -48,11 +48,16 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
-            var query = cities.Where(s => s[0] == 'B');
-            var exis = cities.Select(s => s.Length);
+            var query = cities. Where(s => s[0] == 'B').Select(s => s.Length);
+            var quer = cities.Where(s => s[0] == 'B');
+
+            foreach (var item in quer) {
+                Console.WriteLine(item);
+            }
             foreach (var item in query) {
                 Console.WriteLine(item);
             }
+            
         }
     }
 }
