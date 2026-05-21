@@ -3,6 +3,7 @@ namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+            #region　各演習の呼び出し（ドライバ）
 
             // 3.1.1
             Exercise1(numbers);
@@ -18,6 +19,7 @@ namespace Exercise01 {
 
             // 3.1.4
             Exercise4(numbers);
+            #endregion
         }
 
         private static void Exercise1(List<int> numbers) {
@@ -37,10 +39,13 @@ namespace Exercise01 {
 
         private static void Exercise3(List<int> numbers) {
             Console.WriteLine("---3.1.3----");
-            var query = numbers.Where(s => s >= 50).ToList();
-            foreach (var item in query) {
-                Console.WriteLine(item);
-            }
+
+            numbers.Where(n => n > 50).ToList().ForEach(n => Console.WriteLine(n));
+
+            //var query = numbers.Where(s => s >= 50).ToList();
+            //foreach (var item in query) {
+            //    Console.WriteLine(item);
+            //}
         }
 
         private static void Exercise4(List<int> numbers) {
