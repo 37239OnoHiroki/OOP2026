@@ -47,8 +47,12 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.4完成」
-	        
+            //できたらGitのコメント「問題3.2.4完成」
+            var query = cities.Where(s => s[0] == 'B');
+            var exis = cities.Select(s => s.Length);
+            foreach (var item in query) {
+                Console.WriteLine(item);
+            }
         }
     }
 }

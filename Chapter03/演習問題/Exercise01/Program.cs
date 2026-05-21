@@ -50,9 +50,10 @@ namespace Exercise01 {
 
         private static void Exercise4(List<int> numbers) {
             Console.WriteLine("---3.1.4----");
-            var query = numbers.Select(s => s *2).ToList();
-            foreach (int num in query) {
-                Console.WriteLine(num);
+            numbers.Select(n => n * 2).ToList().ForEach(n => Console.WriteLine(n));
+            //var query = numbers.Select(s => s *2).ToList();
+            //foreach (int num in query) {
+            //    Console.WriteLine(num);
             }
 
         }
