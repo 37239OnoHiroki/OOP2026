@@ -25,6 +25,8 @@ namespace Exercise01 {
             var exis = numbers.Exists(num => num %8 ==0 || num %9 ==0);
             if (exis == true) {
                 Console.WriteLine("存在しています");
+            } else {
+                Console.WriteLine("存在していません");
             }
         }
 
