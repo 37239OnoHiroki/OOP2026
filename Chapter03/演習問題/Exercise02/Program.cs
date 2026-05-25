@@ -48,14 +48,10 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
-            var query = cities. Where(s => s[0] == 'B').Select(s => s.Length);
-            var quer = cities.Where(s => s[0] == 'B');
-
-            foreach (var item in quer) {
-                Console.WriteLine(item);
-            }
-            foreach (var item in query) {
-                Console.WriteLine(item);
+            var obj = cities.Where(s => s.StartsWith('B'))
+                               .Select(s=> new {s, s.Length});
+            foreach (var data in obj) {
+                Console.WriteLine(data.s + ":"+data.Length+"文字");
             }
             
         }
