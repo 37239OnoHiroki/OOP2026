@@ -32,6 +32,28 @@ namespace Section04 {
 
             #endregion
 
+
+            #region 二つの要素を入れ替える
+            int a = 10;
+            int b = 20;
+            int c = 30;
+            Console.WriteLine("入れ替え前");
+            Console.WriteLine( "a=" +a+ "b=" +b);
+
+            var temp = a;
+            a = b;
+            b = temp;
+
+            (b, a,c) = (a, b,999); //入れ替え
+
+            Console.WriteLine("入れ替え後");
+            Console.WriteLine( "a=" +a+ "b=" +b+"c="+c);
+            #endregion
+
+
+
+
+
             #region null条件演算子
             Sale? sale = new Sale {
                 ShopName = "新宿店",
