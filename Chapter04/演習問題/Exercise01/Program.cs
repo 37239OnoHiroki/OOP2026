@@ -55,7 +55,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(List<string> langs) {
-
+            var query = langs.Where(s => s.Contains('S')).ToArray();
+            foreach (var item in query) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise3(List<string> langs) {
