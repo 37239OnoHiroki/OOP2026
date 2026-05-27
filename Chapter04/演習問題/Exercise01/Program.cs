@@ -62,7 +62,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-
+            var query = langs.Find(s => s.Length == 10);
+            string? lang = null;
+            if (query == null) {
+                lang = "unknown";
+            }
+            lang =  query;
+            Console.WriteLine(lang);
         }
     }
 }
