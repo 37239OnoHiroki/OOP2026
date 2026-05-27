@@ -40,12 +40,12 @@ namespace Exercise01 {
 
             //while文
             Console.WriteLine("\nwhile文で出力");
-            int j = 0;
-            while (j<langs.Count) {
-                if (langs[j].Contains('S')) {
-                    Console.WriteLine(langs[j]);
+            int count = 0;
+            while (count<langs.Count) {
+                if (langs[count].Contains('S')) {
+                    Console.WriteLine(langs[count]);
                 }
-                j++;
+                count++;
             }
             
 
@@ -62,11 +62,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-            var query = langs.Find(s => s.Length == 10);
             string? lang = null;
-            if (query == null) {
-                lang = "unknown";
-            }
+            var query = langs.Find(s => s.Length == 10)??(lang = "unknown");
             lang =  query;
             Console.WriteLine(lang);
         }
