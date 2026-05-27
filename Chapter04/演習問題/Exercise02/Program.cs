@@ -19,8 +19,8 @@ namespace Exercise02 {
                     Console.WriteLine(result);
                 } else if (0 < result && result < 100) {
                     Console.WriteLine(result * 2);
-                } else if (100 < result && result < 500) {
-                    Console.WriteLine(result * 5);
+                } else if (100 <= result && result < 500) {
+                    Console.WriteLine(result * 3);
                 } else if (500 <= result) {
                     Console.WriteLine(result);
                 }
@@ -40,7 +40,7 @@ namespace Exercise02 {
                         Console.WriteLine(result * 2);
                         break;
                     case < 500:
-                        Console.WriteLine(result * 5);
+                        Console.WriteLine(result * 3);
                         break;
                     case >= 500:
                         Console.WriteLine(result);
