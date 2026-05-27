@@ -47,11 +47,6 @@ namespace Exercise01 {
                 }
                 count++;
             }
-            
-
-
-
-
         }
 
         private static void Exercise2(List<string> langs) {

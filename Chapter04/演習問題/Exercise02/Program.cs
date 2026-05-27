@@ -33,9 +33,13 @@ namespace Exercise02 {
             if (int.TryParse(number, out int result)) {
 
                 switch (result) {
-                    case (result < 0):
+                    case < 0:
+                        Console.WriteLine(result);
                         break;
-
+                    case > 100:
+                        Console.WriteLine(result * 2);
+                        break;
+                    
                 }
 
             } else Console.WriteLine("入力値に誤りがあります");
