@@ -21,7 +21,7 @@ namespace Exercise02 {
                     Console.WriteLine(result * 2);
                 } else if (100 < result && result < 500) {
                     Console.WriteLine(result * 5);
-                } else if (500 < result) {
+                } else if (500 <= result) {
                     Console.WriteLine(result);
                 }
             } else Console.WriteLine("入力値に誤りがあります");
@@ -33,11 +33,17 @@ namespace Exercise02 {
             if (int.TryParse(number, out int result)) {
 
                 switch (result) {
-                    case < 0:
+                    case < 0 :
                         Console.WriteLine(result);
                         break;
-                    case > 100:
+                    case < 100 :
                         Console.WriteLine(result * 2);
+                        break;
+                    case < 500:
+                        Console.WriteLine(result * 5);
+                        break;
+                    case >= 500:
+                        Console.WriteLine(result);
                         break;
                     
                 }
