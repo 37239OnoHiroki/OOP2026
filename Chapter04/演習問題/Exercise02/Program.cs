@@ -43,10 +43,9 @@ namespace Exercise02 {
                     case < 500:
                         Console.WriteLine(num * 3);
                         break;
-                    case >= 500:
+                    default:
                         Console.WriteLine(num);
                         break;
-
                 }
 
             } else Console.WriteLine("入力値に誤りがあります");
@@ -54,16 +53,18 @@ namespace Exercise02 {
 
         private static void Exercise3() {
             //switch式を使用
-            var number = Console.ReadLine();
-            if (int.TryParse(number, out int result)) {
-                var text = result switch {
-                    < 0 => Console.WriteLine(result),
-                    < 100 =>Console.WriteLine(result*2),
-                    < 500 =>Console.WriteLine(result*3),
-                    _=> Console.WriteLine(result)
-
+            var line = Console.ReadLine();
+            if (int.TryParse(line, out int num)) {
+                var outNum = num switch {
+                    < 0 => num,
+                    < 100 => num * 2,
+                    < 500 => num * 3,
+                    _ => num
                 };
-            }else Console.WriteLine("入力値に誤りがあります");
+                Console.WriteLine(outNum);
+            } else {
+                Console.WriteLine("入力値に誤りがあります");
+            }
         }
     }
 }
