@@ -19,8 +19,12 @@ namespace Exercise01 {
         //Yearが2001～2100の間ならtrue
         public bool Is21Century { get { return (2001<=Year&&Year <= 2100); } }
 
-        //public YearMonth AddOneMonth(int year ,int month ) {
-            
-        //}
+        public YearMonth AddOneMonth() {
+            if (Month == 12) {
+                return new YearMonth(Year, 1);
+            } else {
+                return new YearMonth(Year, Month + 1);
+            }
+        }
     }
 }
