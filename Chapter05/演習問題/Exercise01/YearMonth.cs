@@ -17,14 +17,18 @@ namespace Exercise01 {
         //5.1.2(p116参照）
         //設定されている西暦が21世紀か判断する
         //Yearが2001～2100の間ならtrue
-        public bool Is21Century { get { return (2001<=Year&&Year <= 2100); } }
+        public bool Is21Century => 2001<=Year&&Year <= 2100;
 
         public YearMonth AddOneMonth() {
             if (Month == 12) {
-                return new YearMonth(Year, 1);
+                return new YearMonth(Year+1, 1);
             } else {
                 return new YearMonth(Year, Month + 1);
             }
         }
+
+        //public override string ToString() {
+        //    return  YearMonth(Year+"年", Month+"月");
+        //}
     }
 }
