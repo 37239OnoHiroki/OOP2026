@@ -15,13 +15,8 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
 
-
-            Console.WriteLine("\n5.2.3");
-            FindFirst21C(ymCollection);
-
             Console.WriteLine("\n5.2.4");
             Exercise4(ymCollection);
-
 
             Console.WriteLine("\n5.2.5");
             Exercise5(ymCollection);
@@ -29,32 +24,32 @@ namespace Exercise02 {
 
 
         private static void Exercise2(YearMonth[] ymCollection) {
-            foreach (var item in ymCollection) {
-                Console.WriteLine(item);
+            foreach (var ym in ymCollection) {
+                Console.WriteLine(ym);
             }
         }
 
         //5.2.3
         private static YearMonth? FindFirst21C(YearMonth[] ymCollection) {
-            foreach(var ym in ymCollection) {
+            foreach (var ym in ymCollection) {
                 if (ym.Is21Century) {
                     return ym;
-                } 
+                }
             }
             return null;
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            //foreach(var ym in ymCollection) {
-            //    if (FindFirst21nu) {
-            //        Console.WriteLine("２１世紀のデータはありません");
-            //    }
-            //}
-            
+            var ym = FindFirst21C(ymCollection);
+            if (ym is null)
+                Console.WriteLine("21世紀のデータはありません");
+            else {
+                Console.WriteLine(ym.Year);
+            }
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-            
+
         }
     }
 }
