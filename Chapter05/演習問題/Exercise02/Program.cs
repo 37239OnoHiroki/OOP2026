@@ -24,15 +24,21 @@ namespace Exercise02 {
         }
 
 
-        //public YearMonth Check21Century() {
-        //    return
-        //}
-
-
         private static void Exercise2(YearMonth[] ymCollection) {
             foreach (var item in ymCollection) {
                 Console.WriteLine(item);
             }
+        }
+
+        //5.2.3
+        private static YearMonth? FindFirst21C(YearMonth[] ymCollection) {
+            foreach(var item in ymCollection) {
+                if (item.Is21Century == true) {
+                    Console.WriteLine(item);
+                    break;
+                } 
+            }
+            return null;
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
