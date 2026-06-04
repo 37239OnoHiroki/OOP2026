@@ -37,7 +37,7 @@ namespace Exercise02 {
         //5.2.3
         private static YearMonth? FindFirst21C(YearMonth[] ymCollection) {
             foreach(var item in ymCollection) {
-                if (item.Is21Century == true) {
+                if (item.Is21Century.Equals (true)) {
                     Console.WriteLine(item);
                     break;
                 } 
@@ -46,7 +46,9 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            
+            //if(FindFirst21C  null) {
+            //    Console.WriteLine("２１世紀のデータはありません");
+            //}
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
