@@ -15,6 +15,10 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
 
+
+            Console.WriteLine("\n5.2.3");
+            FindFirst21C(ymCollection);
+
             Console.WriteLine("\n5.2.4");
             Exercise4(ymCollection);
 
