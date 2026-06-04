@@ -15,13 +15,19 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
 
-            Console.WriteLine("5.2.4");
+            Console.WriteLine("\n5.2.4");
             Exercise4(ymCollection);
 
 
-            Console.WriteLine("5.2.5");
+            Console.WriteLine("\n5.2.5");
             Exercise5(ymCollection);
         }
+
+
+        //public YearMonth Check21Century() {
+        //    return
+        //}
+
 
         private static void Exercise2(YearMonth[] ymCollection) {
             foreach (var item in ymCollection) {
@@ -30,9 +36,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            //foreach (var item in ymCollection) {
-            //    if
-            //}
+            
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
