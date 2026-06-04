@@ -31,7 +31,7 @@ namespace Exercise02 {
 
         private static void Exercise4(YearMonth[] ymCollection) {
             //foreach (var item in ymCollection) {
-                
+            //    if
             //}
         }
 
