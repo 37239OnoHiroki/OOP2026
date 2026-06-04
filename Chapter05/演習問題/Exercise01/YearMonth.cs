@@ -11,8 +11,8 @@ namespace Exercise01 {
         public int Month { get; init; }
 
         public YearMonth(int year ,int month) {
-            year = Year;
-            month = Month;
+            Year = year;
+            Month = month;
         }
         //5.1.2(p116参照）
         //設定されている西暦が21世紀か判断する
@@ -27,6 +27,6 @@ namespace Exercise01 {
             }
         }
 
-        public override string ToString() => $"{Year}年{Month}月";
+        public override string ToString() =>$"{Year}年{Month}月";
     }
 }
