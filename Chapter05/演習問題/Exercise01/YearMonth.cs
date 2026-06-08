@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise01 {
     //5.1.1
-    public class YearMonth {
+    public record YearMonth {
         public int Year { get; init; }
         public int Month { get; init; }
 
@@ -26,6 +26,7 @@ namespace Exercise01 {
                 return new YearMonth(Year, Month + 1);
             }
         }
+
 
         public override string ToString() =>$"{Year}年{Month}月";
     }
