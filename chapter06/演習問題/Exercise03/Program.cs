@@ -28,12 +28,8 @@ namespace Exercise03 {
 
         private static void Exercise1(string text) {
 
-            var cnt = 0;
-            foreach (var item in text) {
-                if(item ==' ') {
-                    cnt++;
-                }
-            }
+
+            var cnt = text.Count(c => c == ' ');
             Console.WriteLine($"空白文字数：{cnt}");
         }
 
