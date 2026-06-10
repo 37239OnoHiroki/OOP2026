@@ -42,7 +42,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            
+            var tango = text.Split(' ');
+            Console.WriteLine(tango.Length);
         }
 
         private static void Exercise5(string text) {
