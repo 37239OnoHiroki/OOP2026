@@ -34,7 +34,12 @@ namespace Exercise03 {
         }
 
         private static void Exercise2(string text) {
-            Console.WriteLine(text.Replace("big", "small"));
+            Console.Write("検索:");
+            var search = Console.ReadLine();
+            Console.Write("置換:");
+            var replace = Console.ReadLine();
+            var replaced = text.Replace(search, replace);
+            Console.WriteLine(replaced);
         }
 
         private static void Exercise3(string text) {
@@ -47,7 +52,12 @@ namespace Exercise03 {
         }
 
         private static void Exercise5(string text) {
-            
+            var tango = text.Split(' ');
+            foreach (var item in tango) {
+                if(item.Length < 4) {
+                    Console.WriteLine(item);
+                }
+            }
         }
 
         private static void Exercise6(string text) {
