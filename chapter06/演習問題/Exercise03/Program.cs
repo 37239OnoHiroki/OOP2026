@@ -43,7 +43,7 @@ namespace Exercise03 {
 
         private static void Exercise4(string text) {
             var tango = text.Split(' ');
-            Console.WriteLine(tango.Length);
+            Console.WriteLine($"単語数：{tango.Length}");
         }
 
         private static void Exercise5(string text) {
