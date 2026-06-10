@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -25,7 +27,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise1(string text) {
-            
+            //var count = text.Count(s => s.Contains(' '));
+            Console.WriteLine();
         }
 
         private static void Exercise2(string text) {
