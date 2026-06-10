@@ -27,12 +27,18 @@ namespace Exercise03 {
         }
 
         private static void Exercise1(string text) {
-            //var count = text.Count(s => s.Contains(' '));
-            Console.WriteLine();
+
+            var cnt = 0;
+            foreach (var item in text) {
+                if(item ==' ') {
+                    cnt++;
+                }
+            }
+            Console.WriteLine($"空白文字数：{cnt}");
         }
 
         private static void Exercise2(string text) {
-            
+            Console.WriteLine(text.Replace("big", "small"));
         }
 
         private static void Exercise3(string text) {
