@@ -11,9 +11,6 @@ namespace Exercise01 {
             } else {
                 Console.WriteLine("等しくない");
             }
-
-            
-
         }
     }
 }
