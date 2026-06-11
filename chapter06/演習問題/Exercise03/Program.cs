@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics.Tracing;
 
 namespace Exercise03 {
     internal class Program {
@@ -47,22 +48,17 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            var tango = text.Split(' ');
-            Console.WriteLine($"単語数：{tango.Length}");
+            var words = text.Split(' ');
+            Console.WriteLine($"単語数：{words.Length}");
         }
 
         private static void Exercise5(string text) {
-            var tango = text.Split(' ');
-            foreach (var item in tango) {
-                if(item.Length < 4) {
-                    Console.WriteLine(item);
-                }
-            }
+            //即時実行
+            text.Split(' ').Where(s => s.Length <= 4).ToList().ForEach(Console.WriteLine);
         }
 
         private static void Exercise6(string text) {
-            var cnt = text.Count(c => !(c == ' '));
-            Console.WriteLine($"アルファベット数：{cnt}");
+           
         }
     }
 }
