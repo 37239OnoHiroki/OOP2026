@@ -61,7 +61,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise6(string text) {
-            
+            var cnt = text.Count(c => !(c == ' '));
+            Console.WriteLine($"アルファベット数：{cnt}");
         }
     }
 }
