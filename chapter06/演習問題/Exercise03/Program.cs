@@ -81,12 +81,10 @@ namespace Exercise03 {
                 Console.WriteLine($"{ch}:{array[ch - 'a']}");
             }
 
-
-            foreach (var num in array) {
-                Console.WriteLine(num);
-            }
             //aから順にカウントして集計
-
+            for(char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{str.Count(c => c == ch)}");
+            }
         }
     }
 }
