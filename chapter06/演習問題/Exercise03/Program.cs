@@ -46,15 +46,11 @@ namespace Exercise03 {
 
         private static void Exercise3(string text) {
             var array = text.Split(' ');
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(array[0]);
             var cnt = 0;
-            foreach (var word in array) {
-                if (cnt == 1) {
-                    sb.Append(" " + word);
-                } else {
-                    sb.Append(word);
-                    cnt++;
-                }   
+            foreach (var word in array.Skip(1)) {
+                sb.Append(" ");
+                sb.Append(word);
             }
             Console.WriteLine(sb);
         }
