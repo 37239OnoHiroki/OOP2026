@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Diagnostics.Tracing;
+using System.Text;
 
 namespace Exercise03 {
     internal class Program {
@@ -44,7 +45,17 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
+            var words = text.Split(' ');
+            var sb = new StringBuilder();
+            foreach (var word in words) {
+                sb.Append(" "+word);
+            }
+            var str = "";
+            for(int i = 0;i<sb.Length; i++) {
+                str += sb[i];
+            }
 
+            Console.WriteLine(str.Trim());
         }
 
         private static void Exercise4(string text) {
