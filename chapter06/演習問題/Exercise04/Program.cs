@@ -5,11 +5,9 @@ namespace Exercise04 {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-            var cnt = 0;
-            var category1 = line.Split(';');
-            foreach (var array in category1) {
-                var category2 =array.Split('=');
-                Console.WriteLine($"{ToJapanese(category2[0])}:{category2[1]}");
+            foreach (var item in line.Split(';')) {
+                var word =item.Split('=');
+                Console.WriteLine($"{ToJapanese(word[0])}:{word[1]}");
             }
             
         }
