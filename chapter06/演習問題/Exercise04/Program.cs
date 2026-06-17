@@ -9,21 +9,9 @@ namespace Exercise04 {
             var category1 = line.Split(';');
             foreach (var array in category1) {
                 var category2 =array.Split('=');
-                foreach (var item in category2) {
-                    if(cnt == 0) {
-                        Console.Write($"{ToJapanese(item)} :");
-                        cnt++;
-                    } else {
-                        Console.WriteLine(item);
-                        cnt--;
-                    }
-                }
+                Console.WriteLine($"{ToJapanese(category2[0])}:{category2[1]}");
             }
             
-            
-
-
-
         }
         static string ToJapanese(string key) {
             return key switch {
