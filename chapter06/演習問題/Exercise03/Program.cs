@@ -47,7 +47,6 @@ namespace Exercise03 {
         private static void Exercise3(string text) {
             var array = text.Split(' ');
             var sb = new StringBuilder(array[0]);
-            var cnt = 0;
             foreach (var word in array.Skip(1)) {
                 sb.Append(" ");
                 sb.Append(word);
