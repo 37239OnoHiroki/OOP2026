@@ -33,14 +33,14 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(int[] numbers) {
-            var num = numbers.Select(n => n.ToString("000")).ToArray();
+            var num = numbers.Select(n => n.ToString("000"));
             foreach (var number in num) {
                 Console.WriteLine(number);
             }
         }
 
         private static void Exercise4(int[] numbers) {
-            var sortNumbers = numbers.Order();
+            var sortNumbers = numbers.Order().Take(3);
             foreach (var number in sortNumbers) {
                 Console.WriteLine(number);
             }
