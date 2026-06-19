@@ -40,7 +40,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise4(int[] numbers) {
-            new NotImplementedException();
+            var sortNumbers = numbers.Order();
+            foreach (var number in sortNumbers) {
+                Console.WriteLine(number);
+            }
         }
 
         private static void Exercise5(int[] numbers) {
