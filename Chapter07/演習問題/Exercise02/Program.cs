@@ -48,7 +48,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise3(List<Book> books) {
-            
+            var result =books.Where(x )
         }
 
         private static void Exercise4(List<Book> books) {

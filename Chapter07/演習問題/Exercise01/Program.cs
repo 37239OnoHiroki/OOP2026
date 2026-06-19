@@ -26,29 +26,27 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(int[] numbers) {
-            var num = numbers.TakeLast(2);
-            foreach (var number in num) {
+            foreach (var number in numbers.TakeLast(2)) {
                 Console.WriteLine(number);
             }
         }
 
         private static void Exercise3(int[] numbers) {
-            var num = numbers.Select(n => n.ToString("000"));
-            foreach (var number in num) {
+            var strings = numbers.Select(n => n.ToString("000"));
+            foreach (var number in strings) {
                 Console.WriteLine(number);
             }
         }
 
         private static void Exercise4(int[] numbers) {
-            var sortNumbers = numbers.Order().Take(3);
-            foreach (var number in sortNumbers) {
+            foreach (var number in numbers.Order().Take(3)) {
                 Console.WriteLine(number);
             }
         }
 
         private static void Exercise5(int[] numbers) {
-            var result = numbers.Distinct().Count(x => x > 10);
-            Console.WriteLine(result);
+            var count = numbers.Distinct().Count(n => 10 <n);
+            Console.WriteLine(count);
         }
     }
 }
