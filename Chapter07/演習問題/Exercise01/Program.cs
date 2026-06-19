@@ -27,6 +27,7 @@ namespace Exercise01 {
 
         private static void Exercise2(int[] numbers) {
             var num = numbers.TakeLast(2);
+
             foreach (var number in num) {
                 Console.WriteLine(number);
             }
