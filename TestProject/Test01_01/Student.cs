@@ -2,6 +2,6 @@
     public class Student {
         public string Name { get; init; } = string.Empty;
         public string Subject { get; init; } = string.Empty;
-        public string Score { get; init; } = string.Empty;
+        public int Score { get; set; }
     }
 }
