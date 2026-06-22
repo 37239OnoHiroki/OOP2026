@@ -44,32 +44,35 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(List<Book> books) {
-            Console.WriteLine(books.Count(x => x.Title.Contains("C#")));
+            Console.WriteLine(books.Count(b => b.Title.Contains("C#")));
         }
 
         private static void Exercise3(List<Book> books) {
-            var result = books.Where(x => x.Title.Contains("C#")).Average(x => x.Pages);
-            Console.WriteLine(result);
+            var average = books
+                .Where(b => b.Title.Contains("C#"))
+                .Average(b => b.Pages);
+            Console.WriteLine(average);
         }
 
         private static void Exercise4(List<Book> books) {
-            var result = books.FirstOrDefault(x => x.Price > 4000);
-            Console.WriteLine(result.Title);
+            var book = books.FirstOrDefault(b => b.Price > 4000);
+            if(book is not null)
+                Console.WriteLine(book.Title);
         }
 
         private static void Exercise5(List<Book> books) {
-            Console.WriteLine(books.Where(x => x.Price < 4000).Max(x => x.Pages));
+            Console.WriteLine(books.Where(b => b.Price < 4000).Max(b => b.Pages));
         }
 
         private static void Exercise6(List<Book> books) {
-            foreach (var book in books.Where(x => x.Pages > 400).OrderByDescending(x => x.Price)) {
+            foreach (var book in books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price)) {
                 Console.WriteLine($"{book.Title},{book.Price}");
             }
         }
 
         private static void Exercise7(List<Book> books) {
-            foreach (var book in books.Where(x => x.Title.Contains("C#") && x.Pages < 500)) {
-                Console.WriteLine(book.Title);
+            foreach (var book in books.Where(b => b.Title.Contains("C#") && b.Pages < 500)) {
+                Console.WriteLine(book.Title); 
             }
         }
     }
