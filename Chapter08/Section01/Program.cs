@@ -14,10 +14,19 @@
                 //②県庁所在地の入力
                 Console.Write("県庁所在地:");
                 prefCaptalLocation = Console.ReadLine();
-
-                if (prefCaptalLocation == null) break;
+                
+                    if (prefCaptalLocation == null) break;
                 //③県庁所在地登録処理
-                prefOfficeDict.Add(pref, prefCaptalLocation);
+                if (prefOfficeDict.ContainsKey(pref)) {
+                    Console.WriteLine("上書きしますか？(y/n)");
+                    var yesOrNo = Console.ReadLine();
+                    if (yesOrNo == "y") {
+                        prefOfficeDict[pref] = prefCaptalLocation;
+                    }continue;
+                } else {
+                    prefOfficeDict.Add(pref, prefCaptalLocation);
+                }
+                
             }
             int loop = 0;
             while (loop ==0) {
