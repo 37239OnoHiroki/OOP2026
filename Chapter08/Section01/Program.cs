@@ -3,7 +3,7 @@
         static private Dictionary<string, string> prefOfficeDict = new Dictionary<string, string>();
         static void Main(string[] args) {
             string? pref, prefCaptalLocation;
-            Console.WriteLine("県庁所在地の登録【入力終了：Ctrl + 'Z'");
+            Console.WriteLine("県庁所在地の登録【入力終了：Ctrl + 'Z'】");
 
             while (true) {
                 //①都道府県の入力
@@ -25,18 +25,17 @@
                 Console.WriteLine("1:一覧表示");
                 Console.WriteLine("2:検索");
                 Console.WriteLine("9:終了");
-
                 Console.Write(">");
 
                 var select = Console.ReadLine();
                 if (int.TryParse(select, out int num)) {
                     switch (num) {
-                        case < 2:
+                        case  2:
                             foreach (var item in prefOfficeDict) {
                                 Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
                             }
                             continue;
-                        case < 3:
+                        case  3:
                             Console.Write("都道府県：");
                             pref = Console.ReadLine();
                             if (prefOfficeDict.ContainsKey(pref)) {
@@ -44,7 +43,7 @@
                                 Console.WriteLine(result);
                             }
                             continue;
-                        case < 10:
+                        case 9:
                             loop = 1;
                             break;
                         default:
