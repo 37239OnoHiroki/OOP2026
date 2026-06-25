@@ -147,7 +147,7 @@ namespace Test01_02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-        
+
         }
 
         //問題１０　６文字の都市名を表示
