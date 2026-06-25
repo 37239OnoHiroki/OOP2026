@@ -32,24 +32,19 @@
                 if (int.TryParse(select, out int num)) {
                     switch (num) {
                         case < 2:
-                            Console.WriteLine("1");
                             foreach (var item in prefOfficeDict) {
                                 Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
                             }
-                            loop = 0;
                             continue;
                         case < 3:
-                            //Console.WriteLine("2");
                             Console.Write("都道府県：");
                             pref = Console.ReadLine();
                             if (prefOfficeDict.ContainsKey(pref)) {
                                 var result = prefOfficeDict[pref];
                                 Console.WriteLine(result);
                             }
-                            loop = 0;
                             continue;
                         case < 10:
-                            //Console.WriteLine("9")
                             loop = 1;
                             break;
                         default:
