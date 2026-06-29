@@ -71,7 +71,7 @@
         }
 
 
-    public static void allDisp(Dictionary<string,string> prefOfficeDict) {
+        public static void allDisp(Dictionary<string, string> prefOfficeDict) {
             foreach (var item in prefOfficeDict) {
                 Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
             }
