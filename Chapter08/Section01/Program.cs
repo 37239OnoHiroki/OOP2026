@@ -39,7 +39,7 @@
                         continue;
                     case 2:
 
-                        searchprefCaptalLocation(pref,prefOfficeDict);
+                        searchprefCaptalLocation(prefOfficeDict);
                         continue;
                     case 9:
                         loop = 1;
@@ -73,11 +73,11 @@
             }
         }
 
-        public static void searchprefCaptalLocation(string pref,Dictionary<string, string> prefOfficeDict) {
+        public static void searchprefCaptalLocation(Dictionary<string, string> prefOfficeDict) {
             Console.Write("都道府県：");
-            pref = Console.ReadLine();
-            if (prefOfficeDict.ContainsKey(pref)) {
-                var result = prefOfficeDict[pref];
+            var searchpref = Console.ReadLine();
+            if (prefOfficeDict.ContainsKey(searchpref)) {
+                var result = prefOfficeDict[searchpref];
                 Console.WriteLine(result);
             }
         }
