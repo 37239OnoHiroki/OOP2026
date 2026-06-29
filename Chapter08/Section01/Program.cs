@@ -26,21 +26,20 @@
 
                 Console.WriteLine();//改行
             }
-            int loop = 0;
-            while (loop == 0) {
 
+            Boolean endFlag = false;//終了フラグ
+            while (!endFlag) {
                 switch (menuDisp()) {
-                    case 1:
+                    case 1://一覧出力処理
                         allDisp();
-                        continue;
+                        break;
                     case 2:
                         searchprefCaptalLocation();
-                        continue;
-                    case 9:
-                        loop = 1;
                         break;
+
                     default:
-                        break;
+                        endFlag = true;
+                        return;
                 }
             }
         }
