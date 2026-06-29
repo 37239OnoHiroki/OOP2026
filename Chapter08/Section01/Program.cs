@@ -38,12 +38,8 @@
                         allDisp(prefOfficeDict);
                         continue;
                     case 2:
-                        Console.Write("都道府県：");
-                        pref = Console.ReadLine();
-                        if (prefOfficeDict.ContainsKey(pref)) {
-                            var result = prefOfficeDict[pref];
-                            Console.WriteLine(result);
-                        }
+
+                        searchprefCaptalLocation(pref,prefOfficeDict);
                         continue;
                     case 9:
                         loop = 1;
@@ -76,5 +72,15 @@
                 Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
             }
         }
+
+        public static void searchprefCaptalLocation(string pref,Dictionary<string, string> prefOfficeDict) {
+            Console.Write("都道府県：");
+            pref = Console.ReadLine();
+            if (prefOfficeDict.ContainsKey(pref)) {
+                var result = prefOfficeDict[pref];
+                Console.WriteLine(result);
+            }
+        }
+
     }
 }
