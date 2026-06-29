@@ -54,7 +54,6 @@
             Console.WriteLine("2:検索");
             Console.WriteLine("9:終了");
             Console.Write(">");
-
             return int.Parse(Console.ReadLine());
         }
 
