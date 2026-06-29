@@ -34,11 +34,9 @@
 
                 switch (menuDisp()) {
                     case 1:
-
                         allDisp(prefOfficeDict);
                         continue;
                     case 2:
-
                         searchprefCaptalLocation(prefOfficeDict);
                         continue;
                     case 9:
