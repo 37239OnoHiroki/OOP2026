@@ -32,7 +32,7 @@
             int loop = 0;
             while (loop == 0) {
 
-                Menu();
+                menuDisp();
 
                 var select = Console.ReadLine();
                 if (int.TryParse(select, out int num)) {
@@ -60,7 +60,7 @@
             }
         }
 
-        private static void Menu() {
+        private static void menuDisp() {
             Console.WriteLine("****メニュー****");
             Console.WriteLine("1:一覧表示");
             Console.WriteLine("2:検索");
