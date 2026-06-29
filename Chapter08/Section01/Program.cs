@@ -32,40 +32,43 @@
             int loop = 0;
             while (loop == 0) {
 
-                menuDisp();
-
-                var select = Console.ReadLine();
-                if (int.TryParse(select, out int num)) {
-                    switch (num) {
-                        case 1:
-                            foreach (var item in prefOfficeDict) {
-                                Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
-                            }
-                            continue;
-                        case 2:
-                            Console.Write("都道府県：");
-                            pref = Console.ReadLine();
-                            if (prefOfficeDict.ContainsKey(pref)) {
-                                var result = prefOfficeDict[pref];
-                                Console.WriteLine(result);
-                            }
-                            continue;
-                        case 9:
-                            loop = 1;
-                            break;
-                        default:
-                            break;
-                    }
+                switch (menuDisp()) {
+                    case 1:
+                        foreach (var item in prefOfficeDict) {
+                            Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
+                        }
+                        continue;
+                    case 2:
+                        Console.Write("都道府県：");
+                        pref = Console.ReadLine();
+                        if (prefOfficeDict.ContainsKey(pref)) {
+                            var result = prefOfficeDict[pref];
+                            Console.WriteLine(result);
+                        }
+                        continue;
+                    case 9:
+                        loop = 1;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
 
-        private static void menuDisp() {
+
+
+
+
+        private static int menuDisp() {
             Console.WriteLine("****メニュー****");
             Console.WriteLine("1:一覧表示");
             Console.WriteLine("2:検索");
             Console.WriteLine("9:終了");
             Console.Write(">");
+
+            var select = int.TryParse(Console.ReadLine(), out int num);
+
+            return num;
         }
     }
 }
