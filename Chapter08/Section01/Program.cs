@@ -34,9 +34,8 @@
 
                 switch (menuDisp()) {
                     case 1:
-                        foreach (var item in prefOfficeDict) {
-                            Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
-                        }
+
+                        allDisp(prefOfficeDict);
                         continue;
                     case 2:
                         Console.Write("都道府県：");
@@ -69,6 +68,13 @@
             var select = int.TryParse(Console.ReadLine(), out int num);
 
             return num;
+        }
+
+
+    public static void allDisp(Dictionary<string,string> prefOfficeDict) {
+            foreach (var item in prefOfficeDict) {
+                Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
+            }
         }
     }
 }
