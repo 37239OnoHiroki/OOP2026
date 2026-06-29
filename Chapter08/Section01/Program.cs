@@ -14,37 +14,35 @@
                 //②県庁所在地の入力
                 Console.Write("県庁所在地:");
                 prefCaptalLocation = Console.ReadLine();
-                
-                    if (prefCaptalLocation == null) break;
+
+                if (prefCaptalLocation == null) break;
                 //③県庁所在地登録処理
                 if (prefOfficeDict.ContainsKey(pref)) {
                     Console.WriteLine("上書きしますか？(y/n)");
                     var yesOrNo = Console.ReadLine();
                     if (yesOrNo == "y") {
                         prefOfficeDict[pref] = prefCaptalLocation;
-                    }continue;
+                    }
+                    continue;
                 } else {
                     prefOfficeDict.Add(pref, prefCaptalLocation);
                 }
-                
+
             }
             int loop = 0;
-            while (loop ==0) {
-                Console.WriteLine("****メニュー****");
-                Console.WriteLine("1:一覧表示");
-                Console.WriteLine("2:検索");
-                Console.WriteLine("9:終了");
-                Console.Write(">");
+            while (loop == 0) {
+
+                Menu();
 
                 var select = Console.ReadLine();
                 if (int.TryParse(select, out int num)) {
                     switch (num) {
-                        case  1:
+                        case 1:
                             foreach (var item in prefOfficeDict) {
                                 Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です。");
                             }
                             continue;
-                        case  2:
+                        case 2:
                             Console.Write("都道府県：");
                             pref = Console.ReadLine();
                             if (prefOfficeDict.ContainsKey(pref)) {
@@ -60,6 +58,14 @@
                     }
                 }
             }
+        }
+
+        private static void Menu() {
+            Console.WriteLine("****メニュー****");
+            Console.WriteLine("1:一覧表示");
+            Console.WriteLine("2:検索");
+            Console.WriteLine("9:終了");
+            Console.Write(">");
         }
     }
 }
