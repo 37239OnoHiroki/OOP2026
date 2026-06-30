@@ -1,15 +1,12 @@
-namespace Section03;
 
-// 略語と対応する日本語を管理するクラス
 public class Abbreviations {
-    private readonly Dictionary<string, string> _dict = new();
+    private readonly Dictionary<string, string> _dict = [];
 
-    // コンストラクター
+    // コンストラクタ
     public Abbreviations() {
         var lines = File.ReadAllLines("./Abbreviations.txt");
-        _dict = lines
-            .Select(line => line.Split('='))
-            .ToDictionary(x => x[0], x => x[1]);
+        _dict = lines.Select(line => line.Split('='))
+                     .ToDictionary(x => x[0], x => x[1]);
     }
 
     // 要素を追加
@@ -32,5 +29,24 @@ public class Abbreviations {
             }
         }
     }
-        
+
+    // 8.2.1
+    //Countプロパティを追加
+    public int Count(string lines) =>
+        _dict.[lines]
+
+    // 8.2.2（最終的に式形式で記述すること）
+    public bool Remove(string abb) {
+
+
+
+        return true;    //エラー回避のために記述
+    }
+
+    // Dictionary<TKey, TValue>は、
+    // IEnumerable<KeyValuePair<TKey, TValue>>を実装しているので
+    // _dictを返せば良い
+    public IEnumerable<KeyValuePair<string, string>> GetAll() {
+        return _dict;
+    }
 }
