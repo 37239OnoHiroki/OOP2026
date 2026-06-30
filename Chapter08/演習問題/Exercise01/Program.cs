@@ -11,11 +11,36 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(string text) {
-            var 
+            var alphabetCounter = new Dictionary<char, int>();
+            foreach (var alphabet in text.ToUpper()) {
+                if ('A' <= alphabet && alphabet <= 'Z') {
+                    if (alphabetCounter.ContainsKey(alphabet)) {
+                        alphabetCounter[alphabet]++;
+                    } else {
+                        alphabetCounter[alphabet] = 1;
+                    }
+                }
+            }
+            foreach (var item in alphabetCounter.OrderBy(x =>x.Key)) {
+                Console.WriteLine($"{item.Key}:{item.Value}");
+            }
         }
 
         private static void Exercise2(string text) {
+            var alphabetCounter = new SortedDictionary<char, int>();
+            foreach (var alphabet in text.ToUpper()) {
+                if ('A' <= alphabet && alphabet <= 'Z') {
+                    if (alphabetCounter.ContainsKey(alphabet)) {
+                        alphabetCounter[alphabet]++;
+                    } else {
+                        alphabetCounter[alphabet] = 1;
+                    }
+                }
+            }
 
+            foreach (var item in alphabetCounter) {
+                Console.WriteLine($"{item.Key}:{item.Value}");
+            }
         }
     }
 }
