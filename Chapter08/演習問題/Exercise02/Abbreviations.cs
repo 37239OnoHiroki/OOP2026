@@ -32,12 +32,11 @@ public class Abbreviations {
 
     // 8.2.1
     //Countプロパティを追加
-    public int Count(string lines) =>
-        _dict.[lines]
+    public int Count() =>_dict.Count();
 
     // 8.2.2（最終的に式形式で記述すること）
     public bool Remove(string abb) {
-
+        
 
 
         return true;    //エラー回避のために記述
