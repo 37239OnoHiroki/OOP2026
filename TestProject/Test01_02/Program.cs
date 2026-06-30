@@ -147,7 +147,11 @@ namespace Test01_02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-
+            var cnt = 0;
+            foreach (var item in cities.Select(c => c.Length)) {
+                Console.WriteLine($"{cities[cnt]}：{item}文字");
+                cnt++;
+            }
         }
 
         //問題１０　６文字の都市名を表示
