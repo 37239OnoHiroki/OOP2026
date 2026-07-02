@@ -35,13 +35,15 @@ public class Abbreviations {
     public int Count() =>_dict.Count();
 
     // 8.2.2（最終的に式形式で記述すること）
-    public bool Remove(string abb) {
-        if (_dict.ContainsKey(abb)) {
-            _dict.Remove(abb);
-            return true;
-        } else {
-            return false;
-        }
+    public bool Remove(string abb) => _dict.Remove(abb);
+        //{
+        //if (_dict.ContainsKey(abb)) {
+        //    _dict.Remove(abb);
+        //    return true;
+        //} else {
+        //    return false;
+        //}
+
         return true;    //エラー回避のために記述
     }
 

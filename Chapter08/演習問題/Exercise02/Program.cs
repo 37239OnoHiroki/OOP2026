@@ -32,8 +32,9 @@
 
             // 8.2.4
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
+            //foreach (var item in abbrs.GetAll()) {
 
-
+            //}
 
 
 
