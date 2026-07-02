@@ -44,8 +44,8 @@ public class Abbreviations {
         //    return false;
         //}
 
-        return true;    //エラー回避のために記述
-    }
+    //    return true;    //エラー回避のために記述
+    //}
 
     // Dictionary<TKey, TValue>は、
     // IEnumerable<KeyValuePair<TKey, TValue>>を実装しているので

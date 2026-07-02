@@ -1,4 +1,6 @@
-﻿namespace Exercise02 {
+﻿using System.Net.WebSockets;
+
+namespace Exercise02 {
     internal class Program {
         static void Main(string[] args) {
             var abbrs = new Abbreviations();
@@ -19,7 +21,7 @@
 
             // 8.2.3 (Removeの呼び出し例)
             abbrs.Remove("NPT");
-
+            Console.WriteLine(abbrs.Count());
 
 
 
@@ -32,12 +34,9 @@
 
             // 8.2.4
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
-            //foreach (var item in abbrs.GetAll()) {
-
-            //}
-
-
-
+            foreach (var item in abbrs.GetAll().Where(x => x.Key.Length.Equals(3))) {
+                Console.WriteLine(item);
+            }
 
         }
     }
