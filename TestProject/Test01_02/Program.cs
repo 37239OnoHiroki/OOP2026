@@ -148,9 +148,8 @@ namespace Test01_02 {
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
 
-            var sort = cities.Order();
             var cnt = 0;
-            foreach (var item in sort.Select(c => c.Length)) {
+            foreach (var item in cities.Select(c => c.Length)) {
                 Console.WriteLine($"{cities[cnt]}：{item}文字");
                 cnt++;
             }

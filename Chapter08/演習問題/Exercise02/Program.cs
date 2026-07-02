@@ -11,7 +11,7 @@ namespace Exercise02 {
 
             // 8.2.3 (Countの呼び出し例)
             // 上のAddメソッドで、２つのオブジェクトを追加しているので、読み込んだ単語数+2が、Countの値になる。
-            Console.WriteLine(abbrs.Count());
+            Console.WriteLine("追加後の件数"+ abbrs.Count());
 
 
 
@@ -20,8 +20,9 @@ namespace Exercise02 {
             Console.WriteLine();    //改行
 
             // 8.2.3 (Removeの呼び出し例)
-            abbrs.Remove("NPT");
-            Console.WriteLine(abbrs.Count());
+            if (abbrs.Remove("NPT")) {
+                Console.WriteLine("削除しました");
+            }
 
 
 
