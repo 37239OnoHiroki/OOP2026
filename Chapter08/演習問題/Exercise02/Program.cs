@@ -38,7 +38,7 @@ namespace Exercise02 {
             var query = abbrs.GetAll().Where(x => x.Key.Length == 3);
 
             foreach (var item in query) {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Key,item.Value);
             }
 
         }
