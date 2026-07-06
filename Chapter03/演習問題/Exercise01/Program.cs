@@ -24,7 +24,7 @@ namespace Exercise01 {
 
         private static void Exercise1(List<int> numbers) {
             Console.WriteLine("---3.1.1----");
-            var exis = numbers.Exists(num => num %8 ==0 || num %9 ==0);
+            var exis = numbers.Exists(num => num % 8 == 0 || num % 9 == 0);
             if (exis == true) {
                 Console.WriteLine("存在しています");
             } else {
@@ -34,7 +34,7 @@ namespace Exercise01 {
 
         private static void Exercise2(List<int> numbers) {
             Console.WriteLine("---3.1.2----");
-            numbers.ForEach(num => Console.WriteLine( num /2.0));
+            numbers.ForEach(num => Console.WriteLine(num / 2.0));
         }
 
         private static void Exercise3(List<int> numbers) {
@@ -54,8 +54,6 @@ namespace Exercise01 {
             //var query = numbers.Select(s => s *2).ToList();
             //foreach (int num in query) {
             //    Console.WriteLine(num);
-            }
-
         }
     }
 }
