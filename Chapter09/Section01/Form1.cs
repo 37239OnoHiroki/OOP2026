@@ -27,7 +27,7 @@ namespace Section01 {
 
             var culture = new CultureInfo("ja-JP");
 
-            tbOut3.Text =$"生まれた{birth.Month}月{birth.Day}日は{culture.DateTimeFormat.GetDayName(birth.DayOfWeek)}の第{NthWeek(birth)}週です";
+            tbOut3.Text =$"生まれた{birth.Month}月{birth.Day}日は第{NthWeek(birth)}週の{culture.DateTimeFormat.GetDayName(birth.DayOfWeek)}です";
 
         }
         //年齢を求めるメソッド
