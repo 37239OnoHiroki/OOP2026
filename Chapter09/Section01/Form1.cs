@@ -16,10 +16,10 @@ namespace Section01 {
             DateTime birth = dtpBirth.Value; //¶‚Ü‚ê‚½“ú•t
             DateTime today = DateTime.Today; //¡“ú‚Ì“ú•t
 
-            var age = today.Year - birth.Year;
-            if(today < birth.AddYears(age)) {
-                age--;
-            }
+            //var age = today.Year - birth.Year;
+            //if(today < birth.AddYears(age)) {
+            //    age--;
+            //}
             tbOut.Text = $"{GetAge(birth, today)}Î";
 
             TimeSpan ts = today.Date - birth.Date;
