@@ -26,8 +26,35 @@ namespace Section01 {
             tbOut2.Text = $"¶‚Ü‚ê‚Ä‚©‚ç{ts.Days}“ú–Ú‚Å‚·B";
 
             var culture = new CultureInfo("ja-JP");
-
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
             tbOut3.Text =$"¶‚Ü‚ê‚½{birth.Month}Œ{birth.Day}“ú‚Í‘æ{NthWeek(birth)}T‚Ì{culture.DateTimeFormat.GetDayName(birth.DayOfWeek)}‚Å‚·";
+
+
+            DateTime nextYear = birth.AddYears((today.Year - birth.Year) + 1);
+
+            if (today.Month== birth.Month && today.Day == birth.Day) {
+                tbOut4.Text = $"¡“ú‚ª’a¶“ú";
+            } else {
+                if (today.Date > birth.AddYears(today.Year - birth.Year).Date) {
+                    tbOut4.Text = $"—ˆ”N‚Ì’a¶“ú‚Ü‚Å‚ ‚Æ{365+((nextYear.Date-today.Date).TotalDays-365)}“ú";
+                } else {
+                    tbOut4.Text = $"’a¶“ú‚Ü‚Å‚ ‚Æ{365-((today.Date-(birth.AddYears(today.Year-birth.Year)).Date).Days-(-365))}“ú";
+                }
+            }
+
+
+
+
+
+            //if (today.Month>birth.Month) {
+            //    tbOut4.Text = $"—ˆ”N‚Ì’a¶“ú‚Ü‚Å‚ ‚Æ{(birth.AddYears((today.Year-birth.Year)+1).Date- today.Date).Days}";
+            //} else {
+            //    if(today.Month == birth.Month&& today.Day == birth.Day) {
+            //        tbOut4.Text = $"¡“ú‚ª’a¶“ú";
+            //    } else {
+            //        tbOut4.Text = "";
+            //    }
+            //}
 
         }
         //”N—î‚ğ‹‚ß‚éƒƒ\ƒbƒh
