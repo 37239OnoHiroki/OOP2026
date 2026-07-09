@@ -16,6 +16,7 @@ namespace Exercise01 {
             tbOut2.Text = dateTime.ToString("yyyy”NMMŒŽdd“ú HHŽžmm•ªss•b");
         }
 
+
         private void tbButton3_Click(object sender, EventArgs e) {
             var dateTime = DateTime.Now;
             var culture = new CultureInfo("ja-JP");
