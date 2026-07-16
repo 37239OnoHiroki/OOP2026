@@ -90,11 +90,11 @@
             // 
             // button1
             // 
-            button1.Location = new Point(294, 173);
+            button1.Location = new Point(217, 153);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(163, 51);
             button1.TabIndex = 4;
-            button1.Text = "button1";
+            button1.Text = "ラップタイム";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 

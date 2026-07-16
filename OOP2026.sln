@@ -137,6 +137,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise01", "Chapter09\演
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise03", "Chapter09\演習問題\Exercise03\Exercise03.csproj", "{13EA441B-E72F-5CA2-D5D4-B3F52139D7CF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormApps", "FormApps", "{D3BCC1A0-B2D0-4354-9458-7402BD2BD89C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarReportSystem", "FormApps\CarReportSystem\CarReportSystem.csproj", "{7EF86AE4-C549-4467-87ED-82882D720538}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -299,6 +303,10 @@ Global
 		{13EA441B-E72F-5CA2-D5D4-B3F52139D7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13EA441B-E72F-5CA2-D5D4-B3F52139D7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13EA441B-E72F-5CA2-D5D4-B3F52139D7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF86AE4-C549-4467-87ED-82882D720538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF86AE4-C549-4467-87ED-82882D720538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF86AE4-C549-4467-87ED-82882D720538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF86AE4-C549-4467-87ED-82882D720538}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -360,6 +368,7 @@ Global
 		{DF0B73B7-8EA2-406B-9EBE-C4063B1F1112} = {CDE730CC-6D25-428B-B59C-01EA99390D88}
 		{4AB1253C-8417-E7EC-0C51-3B8C79B1EED4} = {DF0B73B7-8EA2-406B-9EBE-C4063B1F1112}
 		{13EA441B-E72F-5CA2-D5D4-B3F52139D7CF} = {DF0B73B7-8EA2-406B-9EBE-C4063B1F1112}
+		{7EF86AE4-C549-4467-87ED-82882D720538} = {D3BCC1A0-B2D0-4354-9458-7402BD2BD89C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C370C3C8-1D6B-4D52-8FF1-C941157E3425}

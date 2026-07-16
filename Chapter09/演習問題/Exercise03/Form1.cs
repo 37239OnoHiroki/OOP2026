@@ -34,7 +34,7 @@ namespace Exercise03 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            listBox1.Items 
+            
         }
     }
 }
