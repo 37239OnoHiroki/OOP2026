@@ -87,7 +87,7 @@ namespace CarReportSystem {
             tbReport.Text = (String)dgvRecords.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
-            
+
         }
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
@@ -116,9 +116,9 @@ namespace CarReportSystem {
 
         //記録者の入力履歴をコンボボックスに登録（重複なし）
         private void SetCbAuthor(string auther) {
-            if (!cbAuthor.Items.Contains(auther)) 
+            if (!cbAuthor.Items.Contains(auther))
                 cbAuthor.Items.Add(auther);
-            
+
         }
 
         //車名の入力履歴をコンボボックスに登録（重複なし）
@@ -126,5 +126,25 @@ namespace CarReportSystem {
             if (!cbCarName.Items.Contains(carName))
                 cbCarName.Items.Add(carName);
         }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
+        }
+
+        private void btDeletePicture_Click(object sender, EventArgs e) {
+            pbPicture.Image = null;
+        }
+
+
+
+        private void btDeleteRecord_Click(object sender, EventArgs e) {
+            //ヒント
+            //RemoveAt(消したい場所の要素番号)
+            if (dgvRecords.CurrentRow is null) return;
+
+            listCarReport.RemoveAt(dgvRecords.CurrentRow.Index);
+        }
+
+        
     }
 }
