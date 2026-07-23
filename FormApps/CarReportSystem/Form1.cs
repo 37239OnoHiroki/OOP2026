@@ -1,4 +1,8 @@
 using System.ComponentModel;
+using System.Dynamic;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
@@ -6,6 +10,9 @@ namespace CarReportSystem {
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+
+        //設定クラスのオブジェクトを生成
+        Settings settings = new Settings();
 
         public Form1() {
             InitializeComponent();
@@ -132,12 +139,12 @@ namespace CarReportSystem {
         private void ImputItemsUpdate() {
             if ((dgvRecords.CurrentRow is null)
                          || (!dgvRecords.CurrentRow.Selected))
-            InputItemsAllClear();
+                InputItemsAllClear();
         }
         private void btModifyRecord_Click(object sender, EventArgs e) {
 
 
-            if(dgvRecords.SelectedRows.Count == 0) {
+            if (dgvRecords.SelectedRows.Count == 0) {
                 tsslbMessage.Text = "修正するレポートを提出してください";
                 return;
             }
@@ -190,6 +197,16 @@ namespace CarReportSystem {
 
             if (result == DialogResult.OK) {
                 this.BackColor = colorDialog.Color;
+            }
+        }
+
+        //フォームがとじたら呼ばれるイベントハンドラ
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルへ色情報を保存する処理（シリアル化）
+            //p284意向を参考にする（ファイル名：setting.Xml）
+            using (var writer = XmlWriter.Create("setting.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer,settings);
             }
         }
     }
