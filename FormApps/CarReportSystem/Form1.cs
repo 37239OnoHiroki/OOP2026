@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using static CarReportSystem.CarReport;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
 namespace CarReportSystem {
@@ -66,7 +67,7 @@ namespace CarReportSystem {
             }
         }
         private void btNewInput_Click(object sender, EventArgs e) {
-            ImputItemsAllClear();
+            ImPutItemsUpdate();
         }
 
         private void ImputItemsAllClear() {
@@ -77,7 +78,7 @@ namespace CarReportSystem {
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
 
-            
+            dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
         }
         private void dgvRecords_Click(object sender, EventArgs e) {  //Record押したら該当行の詳細表示
 
@@ -142,8 +143,6 @@ namespace CarReportSystem {
 
 
         private void btDeleteRecord_Click(object sender, EventArgs e) {
-            //ヒント
-            //RemoveAt(消したい場所の行番号)
             if ((dgvRecords.CurrentRow is null)
                 || (!dgvRecords.CurrentRow.Selected)) return;
 
@@ -152,12 +151,12 @@ namespace CarReportSystem {
 
             //ImPutItemsUpdate();//データグリットビュを更新したら呼ぶ
 
-            ImputItemsAllClear();
+            ImPutItemsUpdate();
         }
 
         //
         private void ImPutItemsUpdate() {
-            if (!dgvRecords.CurrentRow.Selected)
+            if (! dgvRecords.CurrentRow.Selected)
                 ImputItemsAllClear();
         }
 
@@ -175,7 +174,7 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
-            if ((dgvRecords is null)
+            if ((dgvRecords.CurrentRow is null)
                          || (!dgvRecords.CurrentRow.Selected)) return;
 
             dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
@@ -185,7 +184,20 @@ namespace CarReportSystem {
             tbReport.Text = (String)dgvRecords.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
-            ImputItemsAllClear(); //データグリッドビューを更新したら呼ぶメソッド
+            ImPutItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ColorDialog colorDialog = new ColorDialog();
+            DialogResult result = colorDialog.ShowDialog();
+
+            if (result == DialogResult.OK) {
+                this.BackColor = colorDialog.Color;
+            }
         }
     }
 }
