@@ -216,7 +216,7 @@
             // 
             cbCarName.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             cbCarName.FormattingEnabled = true;
-            cbCarName.Location = new Point(123, 221);
+            cbCarName.Location = new Point(123, 226);
             cbCarName.Name = "cbCarName";
             cbCarName.Size = new Size(230, 40);
             cbCarName.TabIndex = 3;
@@ -243,7 +243,8 @@
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(674, 267);
             dgvRecords.TabIndex = 4;
-            dgvRecords.Click += dgvRecords_Click;
+            dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
+            dgvRecords.Click += btDeleteRecord_Click;
             // 
             // tbReport
             // 
@@ -334,6 +335,7 @@
             btModifyRecord.TabIndex = 6;
             btModifyRecord.Text = "修正";
             btModifyRecord.UseVisualStyleBackColor = false;
+            btModifyRecord.Click += btModifyRecord_Click;
             // 
             // pbPicture
             // 
