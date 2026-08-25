@@ -72,7 +72,7 @@ namespace CarReportSystem {
             SetCbCarName(cbCarName.Text);
 
             dgvRecords.ClearSelection();//セルの選択を解除する
-            ImputItemsUpdate();
+            InputItemsUpdate();
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -155,12 +155,12 @@ namespace CarReportSystem {
             //削除したいインデックスをしていしてリストから削除
             listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
 
-            ImputItemsUpdate();//データグリットビュを更新したら呼ぶ
+            InputItemsUpdate();//データグリットビュを更新したら呼ぶ
         }
         //データグリッドビューを更新したら呼ぶメソッド
-        private void ImputItemsUpdate() {
-            if ((dgvRecords.CurrentRow is null)
-                         || (!dgvRecords.CurrentRow.Selected))
+        private void InputItemsUpdate() {
+            if (dgvRecords.CurrentRow is null
+                         || !dgvRecords.CurrentRow.Selected)
                 InputItemsAllClear();
         }
         private void btModifyRecord_Click(object sender, EventArgs e) {
@@ -206,7 +206,7 @@ namespace CarReportSystem {
             tbReport.Text = carReport.Report;
             pbPicture.Image = carReport.Picture;
 
-            ImputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+            InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
