@@ -1,6 +1,4 @@
 using System.ComponentModel;
-using System.Dynamic;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
@@ -289,7 +287,6 @@ namespace CarReportSystem {
                         SetCbCarName(report.CarName);
                     }
                     
-
                 }
                 catch (Exception ex) {
                     tsslbMessage.Text = "ファイル書き出しエラー";
