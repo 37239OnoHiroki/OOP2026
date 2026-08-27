@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms.Design;
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Serialization;
 
 namespace CarReportSystem {
@@ -21,9 +20,20 @@ namespace CarReportSystem {
             get { return _instance; }
         }
         //外部からnewできないようにする
-        private Settings() {
-        }
+        private Settings() {}
 
+        public void Load() {
+            if (!File.Exists(FileName))
+                return;
+
+            using var reader = XmlReader.Create(FileName);
+            var serializer = new XmlSerializer(typeof(SettingsData));
+
+            if(serializer.Deserialize(reader) is SettingsData data) {
+                MainFormBackColor = data.MainFormBackColor;
+            }
+        }
+        
         public void Save() {
             var data = new SettingsData {
                 MainFormBackColor = MainFormBackColor
@@ -32,10 +42,6 @@ namespace CarReportSystem {
             using var writer = XmlWriter.Create(FileName);
             var serializer = new XmlSerializer(typeof(SettingsData));
             serializer.Serialize(writer, data);
-
-
-
-
         }
     }
 
