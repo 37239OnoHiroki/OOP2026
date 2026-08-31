@@ -9,6 +9,10 @@ internal static class Program
 
         try
         {
+            //SQLiteデータベースを初期化する
+            //Product.dbが存在しない場合は作成され
+            //Productデーブルも存在しない時だけ作成される
+            Database.Intialize();
             Application.Run(new Form1());
         }
         catch (Exception ex)

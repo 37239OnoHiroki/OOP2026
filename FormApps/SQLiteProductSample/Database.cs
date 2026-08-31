@@ -6,11 +6,11 @@ namespace SQLiteProductSample;
 public static class Database {
     //DBファイルの保存場所
     private static readonly string DatabasePath =
-           Path.Combine(AppContext.BaseDirectory, "product.db");
+           Path.Combine(AppContext.BaseDirectory, "products.db");
 
     //SQLiteへ接続するための接続文字列
     private static readonly string ConnectionString =
-        $"Data Sauce={DatabasePath}";
+        $"Data Source={DatabasePath}";
 
     //DBファイルの保存場所を外部から確認するための読み取り専用プロパティ
     public static string FilePath => DatabasePath;
