@@ -2,7 +2,46 @@ using Microsoft.Data.Sqlite;
 
 namespace SQLiteProductSample;
 
-public static class Database
-{
- 
+//SQLiteデータベースへの接続と初期化を担当するクラス
+public static class Database {
+    //DBファイルの保存場所
+    private static readonly string DatabasePath =
+           Path.Combine(AppContext.BaseDirectory, "product.db");
+
+    //SQLiteへ接続するための接続文字列
+    private static readonly string ConnectionString =
+        $"Data Sauce={DatabasePath}";
+
+    //DBファイルの保存場所を外部から確認するための読み取り専用プロパティ
+    public static string FilePath => DatabasePath;
+
+    //新しいSQLiteConnectionを生成して返す
+    public static SqliteConnection GetConnection() {
+        return new SqliteConnection(ConnectionString);
+    }
+
+    public static void Intialize() {
+        //接続オブジェクトを生成
+        using var connection = GetConnection();
+
+        //DBを開く
+        connection.Open();
+
+        //SQLを実行するためのコマンドオブジェクトを作る
+        using var command = connection.CreateCommand();
+
+        //Productテーブルを作るSQL
+        //IF NOT EXISTS により、既にテーブルがあってもエラーにならない
+        command.CommandText =
+             """
+            CREATE TABLE IF NOT EXISTS Products (
+                Id    INTEGER PRIMARY KEY AUTOINCREMENT,
+                Name  TEXT NOT NULL,
+                Price INTEGER NOT NULL CHECK (Price >= 0)
+            );
+            """;
+
+        //結果を返さないSQLを実行する
+        command.ExecuteNonQuery();
+    }
 }
