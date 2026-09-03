@@ -13,8 +13,6 @@ namespace CarReportSystem {
         //設定クラスのオブジェクトを生成
         //Settings settings = Settings.Instance;
 
-
-
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
@@ -22,9 +20,6 @@ namespace CarReportSystem {
 
         private void Form1_Load(object sender, EventArgs e) {
             //背景色を設定する（
-
-
-
             try {
                 Settings.Instance.Load();
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
@@ -33,39 +28,6 @@ namespace CarReportSystem {
                 tsslbMessage.Text = "設定ファイル読み込みエラー";
                 MessageBox.Show(ex.Message); //←より具体的なエラーを出力
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //if (File.Exists("setting.xml")) {
-            //    try {
-            //        using (var reader = XmlReader.Create("setting.xml")) {
-            //            var serializer = new XmlSerializer(typeof(Settings));
-
-            //            if(serializer.Deserialize(reader) is Settings loadedSettings) {
-            //                settings = loadedSettings;
-            //                //背景色設定
-            //                BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-            //            }       
-            //        }
-            //    }
-            //    catch (Exception ex) {
-            //        tsslbMessage.Text = "設定ファイル読み込みエラー";
-            //        MessageBox.Show(ex.Message); //←より具体的なエラーを出力
-            //    }
-            //} else {
-            //    tsslbMessage.Text = "設定ファイルがありません";
-            //}
-
         }
 
         //追加ボタンイベントハンドラ

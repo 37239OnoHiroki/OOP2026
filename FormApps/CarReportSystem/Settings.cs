@@ -5,7 +5,7 @@ namespace CarReportSystem {
     public  sealed class Settings {
 
 
-        private const string FileName = "Setting.xml";
+        private const string FileName = "setting.xml";
 
 
         //唯一のSettingオブジェクト
