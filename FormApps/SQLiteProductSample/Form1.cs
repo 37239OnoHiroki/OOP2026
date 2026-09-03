@@ -66,7 +66,7 @@ public partial class Form1 : Form
 
         }
         catch (Exception ex) {
-            ShowError("修正エラー", ex);
+            ShowError("修正エラー",ex);
         }
     }
 
@@ -100,9 +100,9 @@ public partial class Form1 : Form
 
     private void btClear_Click(object sender, EventArgs e)
     {
-        ClearInput();
         dgvProducts.ClearSelection();
-        tsslMessage.Text = "入力欄をクリアしました";
+        ClearInput();
+        tsslMessage.Text = "入力欄をクリアしました。";
     }
 
     private void dgvProducts_SelectionChanged(object sender, EventArgs e)
