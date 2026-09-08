@@ -1,6 +1,13 @@
 ﻿namespace CarReportSystem {
     [Serializable]
     public class CarReport {
+
+
+        public int Id { get; set; }
+
+
+
+
         //列挙型
         public enum MakerGroup {
             なし,

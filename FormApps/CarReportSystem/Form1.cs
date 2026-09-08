@@ -7,15 +7,17 @@ using static CarReportSystem.CarReport;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
-        //カーレポート管理用リスト
-        BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+        // DataGridViewへ表示する商品の一覧
+        private readonly BindingList<CarReport> _carReports = new();
+        // DB操作を担当するRepository
+        private readonly CarReportRepository _repository = new();
 
         //設定クラスのオブジェクトを生成
         //Settings settings = Settings.Instance;
 
         public Form1() {
             InitializeComponent();
-            dgvRecords.DataSource = listCarReports;
+            dgvRecords.DataSource = CarReportRepository;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
