@@ -17,7 +17,10 @@ namespace CarReportSystem {
 
         public Form1() {
             InitializeComponent();
-            dgvRecords.DataSource = CarReportRepository;
+            dgvRecords.DataSource = _carReports;
+            ReloadCarReports();
+            tsslbMessage.Text = $"DB: {Database.FilePath}";
+
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -47,19 +50,20 @@ namespace CarReportSystem {
             var carReport = new CarReport {
                 Date = dtpDate.Value.Date,
                 Author = cbAuthor.Text.Trim(),
-                Makar = GetRadioButtonMaker(),
+                Mekar = GetRadioButtonMaker(),
                 CarName = cbCarName.Text.Trim(),
                 Report = tbReport.Text,
                 Picture = pbPicture.Image,
             };
-            listCarReports.Add(carReport);
+            carReport.Id = _repository.Add(carReport);
+            _carReports.Add(carReport);
 
             //入力履歴を登録
-            SetCbAuthor(cbAuthor.Text);
-            SetCbCarName(cbCarName.Text);
+            SetCbAuthor(cbAuthor.Text.Trim());
+            SetCbCarName(cbCarName.Text.Trim());
 
             dgvRecords.ClearSelection();//セルの選択を解除する
-            InputItemsUpdate();
+            ClearInputItemsIfNoSelection();
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -81,18 +85,21 @@ namespace CarReportSystem {
                 pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
             }
         }
-        private void btNewInput_Click(object sender, EventArgs e) {
-            InputItemsAllClear();
-        }
-        private void InputItemsAllClear() {
+
+        private void ClearInputItems() {
             dtpDate.Value = DateTime.Today;
             cbAuthor.Text = string.Empty;
             rbOther.Checked = true;
             cbCarName.Text = string.Empty;
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
+            dgvRecords.ClearSelection(); 
+        }
 
-            dgvRecords.ClearSelection(); //セルの選択を解除する
+
+        private void btNewInput_Click(object sender, EventArgs e) {
+            ClearInputItems();
+            tsslbMessage.Text = string.Empty;
         }
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
@@ -140,19 +147,20 @@ namespace CarReportSystem {
                 || (!dgvRecords.CurrentRow.Selected)) return;
 
             //削除したいインデックスをしていしてリストから削除
-            if(dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport) {
+            if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected
+                                              || dgvRecords.CurrentRow.DataBoundItem is not CarReport carReport) {
                 tsslbMessage.Text = "削除するレポートを選択してください";
                 return;
             }
-            listCarReports.Remove(carReport);
-
-            InputItemsUpdate();//データグリットビュを更新したら呼ぶ
+            _repository.Delete(carReport.Id);
+            _carReports.Remove(carReport);
+            ClearInputItems();//データグリットビュを更新したら呼ぶ
         }
         //データグリッドビューを更新したら呼ぶメソッド
-        private void InputItemsUpdate() {
+        private void ClearInputItemsIfNoSelection() {
             if (dgvRecords.CurrentRow is null
                          || !dgvRecords.CurrentRow.Selected)
-                InputItemsAllClear();
+                ClearInputItems();
         }
         private void btModifyRecord_Click(object sender, EventArgs e) {
 
@@ -174,35 +182,25 @@ namespace CarReportSystem {
 
 
             //カーポート管理用リストの該当する要素のデータを書き換える
-            listCarReports[dgvRecords.CurrentRow.Index].Date = dtpDate.Value.Date;
-            listCarReports[dgvRecords.CurrentRow.Index].Author = cbAuthor.Text.Trim();
-            listCarReports[dgvRecords.CurrentRow.Index].Makar = GetRadioButtonMaker();
-            listCarReports[dgvRecords.CurrentRow.Index].CarName = cbCarName.Text.Trim();
-            listCarReports[dgvRecords.CurrentRow.Index].Report = tbReport.Text;
-            listCarReports[dgvRecords.CurrentRow.Index].Picture = pbPicture.Image;
-
+            carReport.Date = dtpDate.Value.Date;
+            carReport.Author = cbAuthor.Text.Trim();
+            carReport.Mekar = GetRadioButtonMaker();
+            carReport.CarName = cbCarName.Text.Trim();
+            carReport.Report = tbReport.Text;
+            carReport.Picture = pbPicture.Image;
             SetCbAuthor(cbAuthor.Text.Trim());
             SetCbCarName(cbCarName.Text.Trim());
+            _repository.Update(carReport);
+            dgvRecords.Refresh();   //データグリッドビューの更新
+            tsslbMessage.Text = "レポートを修正しました。";
 
-            dgvRecords.Refresh(); //データグリットビューの更新
-            tsslbMessage.Text = "れぽーとを修正しました。";
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
 
             if ((dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport)
                          || (!dgvRecords.CurrentRow.Selected)) return;
-
-
-
-            dtpDate.Value = carReport.Date;
-            cbAuthor.Text = carReport.Author;
-            SetRadioButtonMaker(carReport.Makar);
-            cbCarName.Text = carReport.CarName;
-            tbReport.Text = carReport.Report;
-            pbPicture.Image = carReport.Picture;
-
-            InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+            DisplayCarReport(carReport);
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -225,67 +223,24 @@ namespace CarReportSystem {
             Settings.Instance.Save();
         }
 
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
-            reportSaveFile();
-        }
-
-
-        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
-            reportOpenFile();
-        }
-
-        //ファイルセーブ処理
-        private void reportSaveFile() {
-            if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
-                    using (FileStream fs = File.Open(sfdReportFileSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, listCarReports);
-                    }
-                }
-                catch (Exception ex) {
-                    tsslbMessage.Text = "ファイル書き出しエラー";
-                    MessageBox.Show(ex.Message);
-                }
+        private void ReloadCarReports() {
+            _carReports.Clear();
+            foreach (var carReport in _repository.GetAll()) {
+                _carReports.Add(carReport);
+                SetCbAuthor(carReport.Author);
+                SetCbCarName(carReport.CarName);
             }
+            dgvRecords.ClearSelection();
         }
 
-        //ファイルオープン処理
-        private void reportOpenFile() {
-            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    //逆シリアル化でバイナリ形式を読み込む
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
-                    using (FileStream fs = File.Open(
-                        ofdReportFileOpen.FileName, //ファイル名
-                        FileMode.Open,//ファイルモード
-                        FileAccess.Read//アクセス
-                        )) {
-
-                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvRecords.DataSource = listCarReports;
-                    }
-                    //コンボボックスの履歴をすべて消す
-                    cbAuthor.Items.Clear();
-                    cbCarName.Items.Clear();
-
-                    //コンボボックスの履歴を再登録
-                    foreach (var report in listCarReports) {
-                        SetCbAuthor(report.Author);
-                        SetCbCarName(report.CarName);
-                    }
-                    
-                }
-                catch (Exception ex) {
-                    tsslbMessage.Text = "ファイル書き出しエラー";
-                    MessageBox.Show(ex.Message);
-                }
-            }
+        private void DisplayCarReport(CarReport carReport) {
+            dtpDate.Value = carReport.Date;
+            cbAuthor.Text = carReport.Author;
+            SetRadioButtonMaker(carReport.Mekar);
+            cbCarName.Text = carReport.CarName;
+            tbReport.Text = carReport.Report;
+            pbPicture.Image = carReport.Picture;
         }
+
     }
 }

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Drawing;
+using System.IO;
+using Microsoft.Data.Sqlite;
 
 namespace CarReportSystem;
 
@@ -41,7 +45,7 @@ public class CarReportRepository
 
                 Author = reader.GetString(2),
                 //
-                Makar =(CarReport.MakerGroup)reader.GetInt32(3),
+                Mekar =(CarReport.MakerGroup)reader.GetInt32(3),
                 CarName = reader.GetString(4),
                 Report =reader.GetString(5),
                 Picture = reader.IsDBNull(6)
@@ -51,9 +55,30 @@ public class CarReportRepository
         return reports;
     }
 
+
+    // ImageをSQLiteへ保存できるbyte[]へ変換する
+    private static byte[]? ImageToBytes(Image? image) {
+        if (image is null) return null;
+
+        using var stream = new MemoryStream();
+        // DBへはPNG形式で保存
+        image.Save(stream, ImageFormat.Png);
+        return stream.ToArray();
+    }
+
+    // SQLiteのBLOB（byte[]）をImageへ変換する
+    private static Image BytesToImage(byte[] data) {
+        using var stream = new MemoryStream(data);
+        using var image = Image.FromStream(stream);
+        // MemoryStream破棄後も利用できるようBitmapとしてコピーする。
+        return new Bitmap(image);
+    }
+
+
+
     //商品を一件追加するCreate（Insert）に相当する
     //戻り値として自動採番されたIdを探す
-    public int Add(CarReport carReport) {
+    public int Add(CarReport report) {
         //接続オブジェクトを生成
         using var connection = Database.GetConnection();
 
@@ -72,17 +97,34 @@ public class CarReportRepository
 
             SELECT last_insert_rowid();
             """;
+
+        command.Parameters.AddWithValue("$date", report.Date.ToString("yyyy-MM-dd",CultureInfo.InvariantCulture));
+        command.Parameters.AddWithValue("$author", report.Author);
+        command.Parameters.AddWithValue("$maker", report.Mekar);
+        command.Parameters.AddWithValue("$carName",report.CarName);
+        command.Parameters.AddWithValue("$report", report.Report);
+
+        byte[]? pictureData = ImageToBytes(report.Picture);
+
+        var pictureParameter = command.Parameters.Add("$picture", SqliteType.Blob);
+        if(pictureData is not null) {
+            pictureParameter.Value = pictureData;
+        }else {
+            pictureParameter.Value = DBNull.Value;
+        }
+
+
         //一つの値返すSQLを実行する
         var result = command.ExecuteScalar();
 
         if (result is null)
-            throw new InvalidOperationException("登録した商品のIDを取得できませんでした。");
+            throw new InvalidOperationException("登録したカーレポートのIDを取得できませんでした。");
 
         //SQLiteのINTEGERはlongとして返るため、intへ変換する。
         return Convert.ToInt32((long)result);
     }
 
-    public void Update(CarReport product) {
+    public void Update(CarReport report) {
         //接続オブジェクトを生成
         using var connection = Database.GetConnection();
         connection.Open();
@@ -96,9 +138,14 @@ public class CarReportRepository
  
             WHERE Id = $id;
             """;
-        //変更件数が０なら対象が存在しない
-        if (command.ExecuteNonQuery() == 0)
-            throw new InvalidOperationException("修正対象の商品が見つかりませんでした。");
+        command.Parameters.AddWithValue("$date", report.Date.ToString("yyyy-MM-dd"));
+        command.Parameters.AddWithValue("$author", report.Author);
+        command.Parameters.AddWithValue("$maker", report.Mekar);
+        command.Parameters.AddWithValue("$carName", report.CarName);
+        command.Parameters.AddWithValue("$report", report.Report);
+        command.Parameters.AddWithValue("$picture",report.Picture != null? (object)ImageToBytes(report.Picture) : DBNull.Value);
+        command.Parameters.AddWithValue("$id", report.Id);
+        command.ExecuteNonQuery();
     }
 
     public void Delete(int id) {
@@ -115,4 +162,5 @@ public class CarReportRepository
         command.Parameters.AddWithValue("$id", id);
         command.ExecuteNonQuery();
     }
+
 }

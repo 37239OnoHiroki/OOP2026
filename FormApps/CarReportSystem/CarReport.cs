@@ -1,4 +1,7 @@
 ﻿namespace CarReportSystem {
+
+
+
     [Serializable]
     public class CarReport {
 
@@ -24,7 +27,7 @@
         [System.ComponentModel.DisplayName("記録者")]
         public string Author { get; set; } = string.Empty; //記録者
         [System.ComponentModel.DisplayName("メーカー")]
-        public MakerGroup Makar { get; set; } //メーカー
+        public MakerGroup Mekar { get; set; } //メーカー
         [System.ComponentModel.DisplayName("車名")]
         public string CarName { get; set; } = string.Empty;  //車名
         [System.ComponentModel.DisplayName("レポート")]
@@ -33,3 +36,4 @@
         public Image? Picture { get; set; } //画像
     }
 }
+

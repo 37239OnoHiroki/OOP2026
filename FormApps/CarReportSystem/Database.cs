@@ -3,13 +3,18 @@
 
 
 public static class Database {
-
+    //DBファイルの保存場所
     private static readonly string DatabasePath =
         Path.Combine(AppContext.BaseDirectory, "carreport.db");
 
+    //SQLiteへ接続するための接続文字列
     private static readonly string ConnectionString =
     $"Data Source={DatabasePath}";
 
+    //DBファイルの保存場所を外部から確認するための読み取り専用プロパティ
+    public static string FilePath => DatabasePath;
+
+    //新しいSQLiteConnectionを生成して返す
     public static SqliteConnection GetConnection()
         => new SqliteConnection(ConnectionString);
 
