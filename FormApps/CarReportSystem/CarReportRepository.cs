@@ -90,10 +90,10 @@ public class CarReportRepository
 
         command.CommandText =
              """
-            INSERT INTO Products CarReports
+            INSERT INTO CarReports
             (Date, Author, Maker, CarName, Report, Picture)
             VALUES
-            ($date, $author, $maker, $carName, $report, $picture)
+            ($date, $author, $maker, $carName, $report, $picture);
 
             SELECT last_insert_rowid();
             """;
@@ -155,7 +155,7 @@ public class CarReportRepository
         using var command = Connection.CreateCommand();
         command.CommandText =
             """
-            DELETE FROM Products
+            DELETE FROM CarReports
             WHERE Id = $id;
             """;
 

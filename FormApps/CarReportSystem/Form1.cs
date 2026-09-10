@@ -63,7 +63,7 @@ namespace CarReportSystem {
             SetCbCarName(cbCarName.Text.Trim());
 
             dgvRecords.ClearSelection();//セルの選択を解除する
-            ClearInputItemsIfNoSelection();
+            InputItemsAllClear();
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -157,7 +157,7 @@ namespace CarReportSystem {
             ClearInputItems();//データグリットビュを更新したら呼ぶ
         }
         //データグリッドビューを更新したら呼ぶメソッド
-        private void ClearInputItemsIfNoSelection() {
+        private void InputItemsAllClear() {
             if (dgvRecords.CurrentRow is null
                          || !dgvRecords.CurrentRow.Selected)
                 ClearInputItems();
