@@ -7,15 +7,15 @@
 
 @{
     ViewData["Title"] = "商品情報"; //タブ用のタイトル
-    int totalPrice = 0;
+    int total = 0;
 }
 
 <h1>商品一覧</h1> @*画面内の見出し*@
 <ul>
     @foreach(var product in Model) {
         <li>@product.Name @product.Price 円</li>
-        totalPrice += product.Price;
+        total += product.Price;
     }
-    <li> 合計 @totalPrice 円</li>
 </ul>
+<p> 合計金額 @total 円</p>
 
