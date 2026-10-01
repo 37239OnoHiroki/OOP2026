@@ -19,7 +19,28 @@ public class HelloController : Controller {
         new Product {
             Name = "紅茶", 
             Price = 450        
-        }
+        },
+
+        new Product {
+            Name = "ハンバーガー", //商品名
+            Price = 500            //価格
+        },
+
+        new Product {
+            Name = "紅茶",
+            Price = 450
+        },
+
+        new Product {
+            Name = "ハンバーガー", //商品名
+            Price = 500            //価格
+        },
+
+        new Product {
+            Name = "紅茶",
+            Price = 450
+        },
+
       };
         return View(products);
     }
