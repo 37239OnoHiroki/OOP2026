@@ -1,22 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@*このViewがProduct型を受け取る宣言*@
-@model List<MvcBasicSample.Models.Product>;
-
+﻿
 @{
-    ViewData["Title"] = "商品情報"; //タブ用のタイトル
-    int total = 0;
+    ViewData["Title"] = "商品情報";
+    string productName = "ノート";
+    int price = 250;
 }
 
-<h1>商品一覧</h1> @*画面内の見出し*@
-<ul>
-    @foreach(var product in Model) {
-        <li>@product.Name @product.Price 円</li>
-        total += product.Price;
-    }
-</ul>
-<p> 合計金額 @total 円</p>
-
+<h1>商品情報</h1>
+<p>商品名：@productName</p>
+<p>価格：@price 円</p>
 
