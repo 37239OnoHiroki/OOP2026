@@ -15,7 +15,6 @@
     <p>商品はありません</p>
 }else{
     <p>@Model.Count 件の商品があります</p>
-    <ul>
     @foreach (var product in Model)
     {
         <li>@product.Name @product.Price 円</li>
@@ -27,5 +26,4 @@
             }
 
     }
-    </ul>
 }
