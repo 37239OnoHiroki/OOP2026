@@ -6,7 +6,7 @@ namespace MvcBasicSample.Data;
 public class AppDbContext : DbContext{
 
     public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options) {
+        : base(options) { //受け取った設定を親クラスへ渡す
     }
 
     //ProductsテーブルをProduct型として問い合わせるためのプロパティ

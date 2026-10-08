@@ -19,20 +19,20 @@ namespace CarReportSystem {
         }
 
         //SQLiteから全レポートを読み直す
-        private void ReloadCarReports() {
-            _carReports.Clear();
+        //private void ReloadCarReports() {
+        //    _carReports.Clear();
 
-            cbAuthor.Items.Clear();//コンボボックスの履歴を消去
-            cbCarName.Items.Clear();
+        //    cbAuthor.Items.Clear();//コンボボックスの履歴を消去
+        //    cbCarName.Items.Clear();
 
-            foreach (var carReport in _repository.GetAll()) {
-                _carReports.Add(carReport);
+        //    foreach (var carReport in _repository.GetAll()) {
+        //        _carReports.Add(carReport);
 
-                SetCbAuthor(carReport.Author);
-                SetCbCarName(carReport.CarName);
-            }
-            dgvRecords.ClearSelection();
-        }
+        //        SetCbAuthor(carReport.Author);
+        //        SetCbCarName(carReport.CarName);
+        //    }
+        //    dgvRecords.ClearSelection();
+        //}
 
 
         private void Form1_Load(object sender, EventArgs e) {
