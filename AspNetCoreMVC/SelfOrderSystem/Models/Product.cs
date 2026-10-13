@@ -23,5 +23,6 @@ namespace SelfOrderSystem.Models {
         public bool IsActive { get; set; } = true;    // 表示対象
 
         public Category? Category { get; set; }                      // 所属カテゴリ
+
     }
 }
