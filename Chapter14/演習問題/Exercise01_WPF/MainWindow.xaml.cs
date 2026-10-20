@@ -23,12 +23,13 @@ namespace Exercise01_WPF {
 
         private async void Button_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
-            if(ofd.ShowDialog() is true) {
+            if (ofd.ShowDialog() is true) {
                 TextArea.Text = await TextRenderSample.ReadTextAsync(ofd.FileName);
             }
-
         }
     }
+
+
     //非同期のファイル読み込み処理
     static class TextRenderSample {
         public static async Task<string> ReadTextAsync(string fileName) {
@@ -39,14 +40,12 @@ namespace Exercise01_WPF {
 
 
             using (var sr = new StreamReader(fileName)) {
-                string? line;
-
-                while ((line = await sr.ReadLineAsync()) != null) {
-                    sb.AppendLine(line);
+                while (!sr.EndOfStream) {
+                        var line = await sr.ReadLineAsync();
+                        sb.AppendLine(line);
                 }
+                return sb.ToString();
             }
-
-            return sb.ToString();
         }
     }
 }
