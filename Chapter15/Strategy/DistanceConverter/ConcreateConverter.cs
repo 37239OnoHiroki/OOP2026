@@ -22,7 +22,6 @@ public class FeetConverter : ConverterBase {
 }
 
 
-
 public class InchConverter : ConverterBase {
     public override bool IsMyUnit(string name) =>
        name.Equals("inch", StringComparison.OrdinalIgnoreCase) || name.Equals(UnitName);
