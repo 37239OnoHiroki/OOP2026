@@ -14,6 +14,7 @@ namespace Exercise03 {
 
         public bool Execute(string line) {
             Console.WriteLine(line);
+            _count++;
             return (_count < 20);
         }
 
