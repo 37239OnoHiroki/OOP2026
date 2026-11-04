@@ -1,7 +1,8 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@*Controllerから受け取るデータのかた*@
+
+@*Controllerから受け取るデータの型*@
 @model SelfOrderSystem.ViewModels.MenuViewModel
 
 @{
@@ -9,14 +10,11 @@
 }
 
 <h1 class="h3 mb-3">メニュー</h1>
-
-
 <div class="d-flex gap-2 overflow-auto pb-3">
     <a class="btn @(Model.SelectedCategoryId == null ? "btn-dark" : "btn-outline-dark")"
        asp-action="Index">
         すべて
     </a>
-
     @foreach (var category in Model.Categories) {
         <a class="btn @(Model.SelectedCategoryId == category.Id ? "btn-dark" : "btn-outline-dark")"
            asp-action="Index"
@@ -26,14 +24,10 @@
     }
 </div>
 
-
-
 @* 商品一覧より上へ追加する：CartController から渡されたエラーがあれば表示する *@
 @if (TempData["Error"] is string errorMessage) {
     <div class="alert alert-danger">@errorMessage</div>
 }
-
-
 
 <div class="row g-3">
     @foreach (var product in Model.Products) {
