@@ -20,3 +20,167 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* AIデザイン演習用の追加スタイル */
+/*:root {
+    --brand-color: #395c47;
+    --page-bg: #f7f6f1;
+}
+
+body {
+    background: var(--page-bg);
+}
+
+h1, h2 {
+    color: var(--brand-color);
+}
+
+.btn-success {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+
+    .btn-success:hover {
+        background-color: #2b4535;
+        border-color: #2b4535;
+    }*/
+
+/* =========================================
+   飲食店ライクなカスタムスタイル
+   ========================================= */
+
+/* 1. 全体の背景と文字色（温かみのあるカフェ風） */
+body {
+    background-color: #fcfaf7; /* 真っ白ではなく、ほんのりアイボリー */
+    color: #3e3833; /* 真っ黒を避けたダークブラウン系 */
+}
+
+/* 2. カテゴリー切り替えボタン（すべて・肉料理・カレーなど） */
+.btn-group .btn {
+    border-radius: 20px !important; /* 角丸のピル形状にして独立させる */
+    margin: 0 4px;
+    border: 1px solid #dcd1c6;
+    color: #5a5048;
+    background-color: #ffffff;
+    font-weight: 600;
+}
+
+    /* アクティブなカテゴリーボタン */
+    .btn-group .btn-dark,
+    .btn-group .btn:active,
+    .btn-group .btn:focus {
+        background-color: #64554b !important; /* カフェっぽい濃茶色 */
+        border-color: #64554b !important;
+        color: #ffffff;
+    }
+
+/* 3. 商品カード（メニュー一覧） */
+.card {
+    border: none;
+    border-radius: 16px; /* 角を大きく丸める */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 軽い影で浮かせる */
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #ffffff;
+}
+
+    /* マウスオーバー時（タップ前）に少し浮き上がるアクション */
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2c231f;
+    border-bottom: 2px dotted #eaddd3; /* タイトル下に点線で区切り */
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: #6c635d;
+    font-size: 0.95rem;
+}
+
+/* 4. 商品カード内の価格表示 */
+/* （h4, h5, または太字指定されている要素を想定） */
+.card-body h4,
+.card-body h5,
+.card-body b {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #d35400; /* 食欲を刺激するオレンジレッド */
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* 5. 「カートに追加」ボタン（青色から暖色系へ） */
+.card-body .btn-primary {
+    background-color: #e67e22; /* 美味しそうなオレンジ */
+    border-color: #e67e22;
+    color: #ffffff;
+    border-radius: 25px; /* ピル型でタップしやすく */
+    font-weight: bold;
+    width: 100%; /* ボタンをカード幅いっぱいに広げる */
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(230, 126, 34, 0.2);
+    transition: background-color 0.2s;
+}
+
+    .card-body .btn-primary:hover {
+        background-color: #cf711f;
+        border-color: #cf711f;
+    }
+
+/* =========================================
+   カート画面のスタイル
+   ========================================= */
+
+/* カート内のリスト枠 */
+.container > .border, /* カートアイテムを囲むdivを想定 */
+.card.mb-3 {
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+/* 変更・削除ボタンの形を整える */
+.btn-outline-primary,
+.btn-outline-danger {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* 注文内容を確認するボタン（深緑のボタン） */
+.btn-success,
+form button[type="submit"] {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    padding: 14px 0;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+    width: 100%; /* スマホでも押しやすいように幅広に */
+    transition: background-color 0.2s;
+}
+
+    .btn-success:hover,
+    form button[type="submit"]:hover {
+        background-color: #219653;
+        border-color: #219653;
+    }
+
+/* 合計金額 */
+.text-end h3,
+.text-right h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c0392b; /* 目立つ赤系 */
+    margin-top: 15px;
+}
