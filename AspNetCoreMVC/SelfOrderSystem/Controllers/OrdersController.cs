@@ -53,12 +53,17 @@ public class OrdersController : Controller {
             model.Items = cartItems;
             return View("Checkout", model);
         }
+        //注文成功時のPublicIDをSessionに保存
+        HttpContext.Session.SetString(
+                                "LastOrderPublicId",
+                                result.PublicId!.Value.ToString());
 
         _cart.Clear();        // 保存成功後にカートを空にする 
-        return RedirectToAction(nameof(Complete),
-            new { id = result.PublicId });
+
+        return RedirectToAction(nameof(Complete),new { id = result.PublicId });
     }
 
+    [HttpGet]
     public async Task<IActionResult> Complete(Guid id) {
         var order = await LoadPublicOrderAsync(id);
         return order == null ? NotFound() : View(order);
@@ -76,4 +81,17 @@ public class OrdersController : Controller {
             .ThenInclude(i => i.Product)
             .SingleOrDefaultAsync(o => o.PublicId == publicId);
     }
+
+    //同じブラウザで最後に確定した注文を開く
+    public IActionResult MyOrder() {
+        var publicId = HttpContext.Session.GetString("LastOrderPublicId");
+
+        if (!Guid.TryParse(publicId, out var id)) {
+            return RedirectToAction("Index", "Menu");
+        }
+        return RedirectToAction(nameof(Status), new { id });
+    }
+
+
+
 }
