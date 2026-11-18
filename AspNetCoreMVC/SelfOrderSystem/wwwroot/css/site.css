@@ -1,47 +1,392 @@
+:root {
+    --so-bg: #f8fafc;
+    --so-surface: #ffffff;
+    --so-ink: #18283e;
+    --so-muted: #64748b;
+    --so-border: #e2e8f0;
+    /* アクセントカラー（ブルー系にする場合は #2563eb / #1d4ed8 に変更） */
+    --so-accent: #ea580c;
+    --so-accent-hover: #c2410c;
+    --so-accent-soft: #fff7ed;
+    --so-success: #16a34a;
+    --so-success-hover: #15803d;
+}
+
 html {
-  font-size: 14px;
+    font-size: 15px;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.so-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--so-bg);
+    color: var(--so-ink);
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.text-accent {
+    color: var(--so-accent) !important;
 }
 
-body {
-  margin-bottom: 60px;
+/* =========================================
+   ヘッダー・ナビゲーション
+   ========================================= */
+.so-navbar {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--so-border);
+    padding: 0.7rem 0;
 }
 
-/* 商品写真を一定の高さで表示 */
+.so-brand {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--so-ink) !important;
+    letter-spacing: -0.02em;
+}
+
+.so-nav-link {
+    color: #475569 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 8px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+    .so-nav-link:hover,
+    .so-nav-link.active {
+        color: var(--so-ink) !important;
+        background-color: #f1f5f9;
+    }
+
+.so-nav-status {
+    color: #1d4ed8 !important;
+    background-color: #eff6ff;
+}
+
+    .so-nav-status:hover {
+        background-color: #dbeafe;
+    }
+
+.so-nav-sub {
+    color: var(--so-muted) !important;
+    font-size: 0.85rem;
+}
+
+.so-staff-link {
+    border: 1px solid var(--so-border);
+    color: var(--so-muted);
+    background: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.35rem 0.75rem;
+    transition: all 0.15s ease;
+}
+
+    .so-staff-link:hover,
+    .so-staff-link.active {
+        background: var(--so-ink);
+        border-color: var(--so-ink);
+        color: #fff;
+    }
+
+/* =========================================
+   共通UIパーツ（全ページに自動で効く）
+   ========================================= */
+h1, .h1, h2, .h2, h3, .h3 {
+    color: var(--so-ink);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.card {
+    background-color: var(--so-surface);
+    border: 1px solid var(--so-border);
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(20, 30, 50, 0.04);
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 0.55rem 1.1rem;
+    transition: transform 0.12s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+        .btn:focus, .btn:active:focus, .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(234, 88, 12, 0.2);
+        }
+
+.btn-primary {
+    background-color: var(--so-accent);
+    border-color: var(--so-accent);
+    color: #fff;
+}
+
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: var(--so-accent-hover);
+        border-color: var(--so-accent-hover);
+    }
+
+.btn-success {
+    background-color: var(--so-success);
+    border-color: var(--so-success);
+}
+
+    .btn-success:hover, .btn-success:focus {
+        background-color: var(--so-success-hover);
+        border-color: var(--so-success-hover);
+    }
+
+.btn-outline-secondary {
+    border-color: #cbd5e1;
+    color: #475569;
+    background: #fff;
+}
+
+    .btn-outline-secondary:hover {
+        background: #f1f5f9;
+        border-color: #94a3b8;
+        color: var(--so-ink);
+    }
+
+/* フォーム入力欄（Checkoutのテーブル番号などが横長になりすぎないように調整） */
+.form-control {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    color: var(--so-ink);
+    background-color: #fff;
+}
+
+    .form-control:focus {
+        border-color: var(--so-accent);
+    }
+
+main input[type="number"].form-control {
+    max-width: 220px;
+}
+
+/* アラート（注文状況画面のボックスなども見やすく） */
+.alert {
+    border-radius: 12px;
+    border-width: 1px;
+    font-weight: 600;
+}
+
+.alert-secondary {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+    padding: 1rem 1.25rem;
+}
+
+/* =========================================
+   メニュー画面専用スタイル
+   ========================================= */
+.so-page-header {
+    margin-bottom: 1.25rem;
+}
+
+    .so-page-header p {
+        color: var(--so-muted);
+        margin: 0.25rem 0 0;
+        font-size: 0.95rem;
+    }
+
+/* カテゴリタブ */
+.so-category-tabs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    scrollbar-width: none;
+}
+
+    .so-category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+.so-category-pill {
+    white-space: nowrap;
+    border-radius: 999px;
+    padding: 0.45rem 1.15rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--so-border);
+    background: #fff;
+    color: #475569;
+    transition: all 0.15s ease;
+}
+
+    .so-category-pill:hover {
+        border-color: var(--so-ink);
+        color: var(--so-ink);
+    }
+
+    .so-category-pill.active {
+        background: var(--so-ink);
+        border-color: var(--so-ink);
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(24, 40, 62, 0.18);
+    }
+
+/* 商品カード */
+.so-product-card {
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+    .so-product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(20, 30, 50, 0.09);
+    }
+
+    .so-product-card.is-sold-out {
+        opacity: 0.72;
+    }
+
+.so-photo-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
 .so-product-photo {
     display: block;
     width: 100%;
-    height: 190px;
+    height: 195px;
     object-fit: cover;
     background: #f0eee9;
-}
-/* 写真の登録がない商品に表示 */
-.so-product-photo--empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 0.95rem;
+    transition: transform 0.3s ease;
 }
 
-/*pcではカートをスクロールに追従させる*/
-@media (min-width: 992px){
-    .so-cart-sideber{
+.so-product-card:hover .so-product-photo {
+    transform: scale(1.03);
+}
+
+.so-product-photo--empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    color: var(--so-muted);
+    font-size: 0.9rem;
+}
+
+.so-soldout-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+}
+
+.so-product-title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--so-ink);
+    margin-bottom: 0.35rem;
+}
+
+.so-product-desc {
+    color: var(--so-muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-bottom: 0.9rem;
+}
+
+.so-product-price {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--so-ink);
+    margin-bottom: 0.85rem;
+}
+
+    .so-product-price span {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--so-muted);
+    }
+
+/* PC右側カート追従（元のクラス名 .so-cart-sideber も互換維持） */
+@media (min-width: 992px) {
+    .so-cart-sideber,
+    .so-cart-sidebar {
         position: sticky;
-        top: 90px;
+        top: 86px;
     }
 }
+
+.so-cart-summary-box {
+    background: #f8fafc;
+    border: 1px solid var(--so-border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
+}
+
+/* スマホ下部固定カートバー */
+.so-mobile-cart-bar {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 1030;
+    background: var(--so-ink);
+    color: #fff;
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.28);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 991.98px) {
+    .so-has-mobile-bar {
+        padding-bottom: 5.5rem;
+    }
+}
+
+/* =========================================
+   フッター
+   ========================================= */
+.so-footer {
+    background: #fff;
+    border-top: 1px solid var(--so-border);
+    padding: 1.1rem 0;
+    color: var(--so-muted);
+    font-size: 0.85rem;
+}
+
+    .so-footer a {
+        color: var(--so-muted);
+        text-decoration: none;
+    }
+
+        .so-footer a:hover {
+            color: var(--so-ink);
+            text-decoration: underline;
+        }
