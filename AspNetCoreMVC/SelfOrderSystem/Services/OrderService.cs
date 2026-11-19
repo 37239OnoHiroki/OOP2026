@@ -21,7 +21,7 @@ public class OrderService : IOrderService {
 
     }
 
-    public  async Task<PlaceOrderResult> PlaceAsync(List<CartItem> cartItems, int tableNumber) {
+    public async Task<PlaceOrderResult> PlaceAsync(List<CartItem> cartItems, int tableNumber) {
         var result = new PlaceOrderResult(); // 注文結果とエラーをまとめる 
 
         if (cartItems.Count == 0)           // カートが空なら中止 
@@ -88,8 +88,8 @@ public class OrderService : IOrderService {
         result.PublicId = order.PublicId; // 完了画面で使うID 
 
         try {
-            //店舗画面への更新の合図をおくる
-            await _hubContext.Clients.All.SendAsync("OrdersChanged");
+            // 変更後：スタッフグループだけに通知 
+            await _hubContext.Clients.Group("staff").SendAsync("OrdersChanged");
 
         }
         catch (Exception ex) {
@@ -102,5 +102,5 @@ public class OrderService : IOrderService {
 
         return result;                    // 成功結果を返す 
     }
-} 
+}
 
